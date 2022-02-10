@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from "../../../../model/user";
 import {FriendRelationService} from "../../../../service/friend-relation.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-friend-nearby',
@@ -9,9 +10,11 @@ import {FriendRelationService} from "../../../../service/friend-relation.service
 })
 export class FriendNearbyComponent implements OnInit {
   currentUser: string = "";
-  idUser!: string | undefined;
+  idUser: string | undefined;
   listUserNotFriend!: User[];
-  constructor(private friendRelationService : FriendRelationService) {
+
+  constructor(private friendRelationService: FriendRelationService,
+              private router: Router) {
     // @ts-ignore
     this.currentUser = localStorage.getItem("currentUser")
     console.log(this.currentUser);
@@ -28,8 +31,13 @@ export class FriendNearbyComponent implements OnInit {
     })
   }
 
-addFriend()
-{
+  addFriend(idFriend: string | undefined) {
+    console.log(idFriend);
+    // @ts-ignore
+    this.friendRelationService.addFriend(this.idUser, idFriend).subscribe(() => {
+      alert('Chờ xác nhận');
+      this.router.navigate(['user/friend']);
+    });
 
-}
+  }
 }
