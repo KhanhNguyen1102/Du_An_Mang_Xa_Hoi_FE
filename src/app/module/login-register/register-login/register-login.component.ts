@@ -1,28 +1,30 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {first} from "rxjs";
 import {AuthenticationService} from "../../../service/authentication.service";
 import {UserService} from "../../../service/user.service";
 import {JWTResponse} from "../../../model/JWTResponse";
-
+import * as moment from 'moment';
 @Component({
   selector: 'app-register-login',
   templateUrl: './register-login.component.html',
   styleUrls: ['./register-login.component.css']
 })
 export class RegisterLoginComponent implements OnInit {
+  min:string ="" ;
+  max:string ="";
   loginForm: FormGroup = new FormGroup({
-    username: new FormControl(''),
-    password: new FormControl('')
+    username: new FormControl('',[Validators.required]),
+    password: new FormControl('',[Validators.required, Validators.minLength(6),Validators.maxLength(32)])
   });
   registerForm: FormGroup = new FormGroup({
-    newUserName: new FormControl(''),
-    newPassWord: new FormControl(''),
-    newConfirmPassWord: new FormControl(''),
-    newEmail: new FormControl(''),
-    newPhoneNumber: new FormControl(''),
-    newDateOfBirth: new FormControl(''),
+    newUserName: new FormControl('',[Validators.required]),
+    newPassWord: new FormControl('',[Validators.required, Validators.minLength(6),Validators.maxLength(32)]),
+    newConfirmPassWord: new FormControl('',[Validators.required, Validators.minLength(6),Validators.maxLength(32)]),
+    newEmail: new FormControl('',[Validators.required, Validators.email]),
+    newPhoneNumber: new FormControl('',[Validators.required, Validators.pattern('^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$')]),
+    newDateOfBirth: new FormControl('',[Validators.required]),
   })
   // @ts-ignore
   returnUrl: string;
@@ -36,7 +38,8 @@ export class RegisterLoginComponent implements OnInit {
               private router: Router,
               private authenticationService: AuthenticationService,
               private userService: UserService) {
-    console.log(this.authenticationService.currentUserValue);
+    this.min= moment(moment().subtract(29200, 'days').calendar()).format("YYYY-MM-DD")
+    this.max= moment(moment().subtract(5840, 'days').calendar()).format("YYYY-MM-DD")
   }
 
   ngOnInit() {

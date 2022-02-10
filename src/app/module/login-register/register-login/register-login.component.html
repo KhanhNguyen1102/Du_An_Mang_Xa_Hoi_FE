@@ -126,6 +126,18 @@
                     <label for="password" class="sr-only">Password</label>
                     <input formControlName="newPassWord" id="password" class="form-control input-group-lg" type="password" name="password" title="Enter password" placeholder="Password"/>
                   </div>
+                  <div style="color: red;padding-left: 30px" role="alert"
+                       *ngIf="registerForm.controls['newPassWord'].errors?.['required']
+         && registerForm.controls['newPassWord'].touched">Password is required!
+                  </div>
+                  <div style="color: red;padding-left: 30px" role="alert"
+                       *ngIf="registerForm.controls['newPassWord'].errors?.['minlength']
+         && registerForm.controls['newPassWord'].touched">Password length must be between 6 to 32!
+                  </div>
+                  <div style="color: red;padding-left: 30px" role="alert"
+                       *ngIf="registerForm.controls['newPassWord'].errors?.['maxlength']
+         && registerForm.controls['newPassWord'].touched">Password length must be between 6 to 32!
+                  </div>
                 </div>
                 <div class="row">
                   <div class="form-group col-xs-12">
@@ -136,20 +148,29 @@
                 <div class="row">
                   <div class="form-group col-xs-12">
                     <label for="email" class="sr-only">Email</label>
-                    <input formControlName="newEmail" id="email" class="form-control input-group-lg" type="text" name="Email" title="Enter Email" placeholder="Your Email"/>
+                    <input formControlName="newEmail" id="email" class="form-control input-group-lg" type="text"
+                           name="Email" title="Enter Email" placeholder="Your Email"/>
                   </div>
-                </div>
-                <div class="row">
+                  <div style="color: red;padding-left: 30px" role="alert"
+                       *ngIf="registerForm.controls['newEmail'].errors?.['required']
+         && registerForm.controls['newEmail'].touched">Email is required!
+                  </div>
+                  <div style="color: red;padding-left: 30px" role="alert"
+                       *ngIf="registerForm.controls['newEmail'].errors?.['email']
+         && registerForm.controls['newEmail'].touched">Not a valid email!
+                  </div>
+
                   <div class="form-group col-xs-12">
                     <label for="phone" class="sr-only">Phone number</label>
-                    <input formControlName="newPhoneNumber" id="phone" class="form-control input-group-lg" type="text" name="phone" title="Enter Phone number" placeholder="Your Phone Number"/>
+                    <input formControlName="newPhoneNumber" id="phone" class="form-control input-group-lg" type="text"
+                           name="phone" title="Enter Phone number" placeholder="Your Phone Number"/>
                   </div>
                 </div>
                 <div class="row">
                   <p class="birth"><strong>Date of Birth</strong></p>
                   <div style="width: 100% !important;" class="form-group col-sm-3 col-xs-6">
                     <label for="month" class="sr-only"></label>
-                    <input formControlName="newDateOfBirth" id="month" class="form-control input-group-lg" name="dateOfBirth" type="date">
+                    <input min="{{min}}" max="{{max}}" formControlName="newDateOfBirth" id="month" class="form-control input-group-lg" name="dateOfBirth" type="date">
                   </div>
                 </div>
                 <p><a href="#">Already have an account?</a></p>
