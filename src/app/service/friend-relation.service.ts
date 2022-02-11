@@ -20,4 +20,8 @@ export class FriendRelationService {
   addFriend(idU: string, idFriend: string): Observable<FriendRelation>{
     return this.httpClient.get<FriendRelation>(API_URL + `/addFriend/${idU}/${idFriend}`);
   }
+
+  findRequestById(idU: string): Observable<User[]>{
+    return this.httpClient.get<User[]>(API_URL + `/friendRequest/${idU}`);
+  }
 }

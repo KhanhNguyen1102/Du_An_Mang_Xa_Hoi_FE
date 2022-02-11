@@ -4,14 +4,14 @@ import {FriendRelationService} from "../../../../service/friend-relation.service
 import {Router} from "@angular/router";
 
 @Component({
-  selector: 'app-friend-nearby',
-  templateUrl: './friend-nearby.component.html',
-  styleUrls: ['./friend-nearby.component.css']
+  selector: 'app-acc-friend',
+  templateUrl: './acc-friend.component.html',
+  styleUrls: ['./acc-friend.component.css']
 })
-export class FriendNearbyComponent implements OnInit {
+export class AccFriendComponent implements OnInit {
   currentUser: string = "";
   idUser: string | undefined;
-  listUserNotFriend!: User[];
+  listFriendRequest!: User[];
 
   constructor(private friendRelationService: FriendRelationService,
               private router: Router) {
@@ -23,21 +23,14 @@ export class FriendNearbyComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.friendRelationService.getAllNotFriend(this.idUser + "").subscribe(result => {
-      this.listUserNotFriend = result;
+    this.friendRelationService.findRequestById(this.idUser + "").subscribe(result => {
+      this.listFriendRequest = result;
       console.log(result);
     }, error => {
       console.log(error)
     })
   }
 
-  addFriend(idFriend: string | undefined) {
-    console.log(idFriend);
-    // @ts-ignore
-    this.friendRelationService.addFriend(this.idUser, idFriend).subscribe(() => {
-      alert('Chờ xác nhận');
-      this.ngOnInit();
-      this.router.navigate(['user/friend']);
-    });
+  accFriend(idUser: string | undefined) {
   }
 }
