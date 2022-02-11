@@ -17,15 +17,19 @@ export class FriendRelationService {
     return this.httpClient.get<User[]>(API_URL + `/notFriend/${id}`);
   }
 
-  addFriend(idU: string, idFriend: string): Observable<FriendRelation>{
+  addFriend(idU: string, idFriend: string): Observable<FriendRelation> {
     return this.httpClient.get<FriendRelation>(API_URL + `/addFriend/${idU}/${idFriend}`);
   }
 
-  findRequestById(idU: string): Observable<User[]>{
+  findRequestById(idU: string): Observable<User[]> {
     return this.httpClient.get<User[]>(API_URL + `/friendRequest/${idU}`);
   }
 
-  acceptFriend(idU: string, idRequest: string): Observable<FriendRelation>{
+  acceptFriend(idU: string, idRequest: string): Observable<FriendRelation> {
     return this.httpClient.get<FriendRelation>(API_URL + `/acceptance/${idU}/${idRequest}`);
+  }
+
+  deleteRequest(idU: string, idRequest: string): Observable<FriendRelation> {
+    return this.httpClient.delete<FriendRelation>(API_URL + `/${idRequest}/${idU}`);
   }
 }

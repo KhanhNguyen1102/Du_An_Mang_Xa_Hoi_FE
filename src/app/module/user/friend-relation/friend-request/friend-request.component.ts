@@ -40,4 +40,14 @@ export class FriendRequestComponent implements OnInit {
       this.router.navigate(['user/requests']);
     });
   }
+
+  deleteRequest(idUserRequest: string | undefined) {
+    console.log(idUserRequest);
+    // @ts-ignore
+    this.friendRelationService.deleteRequest(this.idUser, idUserRequest).subscribe(() => {
+      alert('Hủy kết bạn thành công');
+      this.ngOnInit();
+      this.router.navigate(['user/requests']);
+    });
+  }
 }
