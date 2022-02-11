@@ -185,6 +185,10 @@
                        *ngIf="registerForm.controls['newPhoneNumber'].errors?.['required']
          && registerForm.controls['newPhoneNumber'].touched">Phone number is required!
                   </div>
+                  <div style="color: red;padding-left: 30px" role="alert"
+                       *ngIf="registerForm.controls['newPhoneNumber'].errors?.['pattern']
+         && registerForm.controls['newPhoneNumber'].touched">Not a valid number!
+                  </div>
                 </div>
                 <div class="row">
                   <p class="birth"><strong>Date of Birth</strong></p>
