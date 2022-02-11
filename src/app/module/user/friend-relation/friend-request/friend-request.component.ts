@@ -4,11 +4,11 @@ import {FriendRelationService} from "../../../../service/friend-relation.service
 import {Router} from "@angular/router";
 
 @Component({
-  selector: 'app-acc-friend',
-  templateUrl: './acc-friend.component.html',
-  styleUrls: ['./acc-friend.component.css']
+  selector: 'app-friend-request',
+  templateUrl: './friend-request.component.html',
+  styleUrls: ['./friend-request.component.css']
 })
-export class AccFriendComponent implements OnInit {
+export class FriendRequestComponent implements OnInit {
   currentUser: string = "";
   idUser: string | undefined;
   listFriendRequest!: User[];
@@ -31,6 +31,13 @@ export class AccFriendComponent implements OnInit {
     })
   }
 
-  accFriend(idUser: string | undefined) {
+  acceptFriend(idUserRequest: string | undefined) {
+    console.log(idUserRequest);
+    // @ts-ignore
+    this.friendRelationService.acceptFriend(this.idUser, idUserRequest).subscribe(() => {
+      alert('Kết bạn thành công');
+      this.ngOnInit();
+      this.router.navigate(['user/requests']);
+    });
   }
 }

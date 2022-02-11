@@ -4,7 +4,7 @@ import {Observable} from "rxjs";
 import {User} from "../model/user";
 import {FriendRelation} from "../model/friend-relation";
 
-const API_URL = "http://localhost:8080/api/relationships";
+const API_URL = "http://localhost:8080/api/friends";
 
 @Injectable({
   providedIn: 'root'
@@ -23,5 +23,9 @@ export class FriendRelationService {
 
   findRequestById(idU: string): Observable<User[]>{
     return this.httpClient.get<User[]>(API_URL + `/friendRequest/${idU}`);
+  }
+
+  acceptFriend(idU: string, idRequest: string): Observable<FriendRelation>{
+    return this.httpClient.get<FriendRelation>(API_URL + `/acceptance/${idU}/${idRequest}`);
   }
 }

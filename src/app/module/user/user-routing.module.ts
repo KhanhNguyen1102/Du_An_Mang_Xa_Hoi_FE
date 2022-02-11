@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {FriendNearbyComponent} from "./friend-relation/friend-nearby/friend-nearby.component";
 import {NewsfeedComponent} from "./newsfeed/newsfeed.component";
-import {AccFriendComponent} from "./friend-relation/acc-friend/acc-friend.component";
+import {FriendRequestComponent} from "./friend-relation/friend-request/friend-request.component";
 
 const routes: Routes = [
   {
@@ -14,8 +14,8 @@ const routes: Routes = [
     component: FriendNearbyComponent
   },
   {
-    path: 'friend-request',
-    component: AccFriendComponent
+    path: 'requests',
+    component: FriendRequestComponent
   }
 ];
 
