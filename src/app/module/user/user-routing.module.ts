@@ -1,7 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import {RegisterLoginComponent} from "../login-register/register-login/register-login.component";
+import {EditProfileComponent} from "./edit-profile/edit-profile.component";
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path :'edit',
+    component: EditProfileComponent
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

@@ -32,9 +32,9 @@ export class UserService {
   //   return this.http.get<User>(API_URL + `/users/${id}`);
   // }
   //
-  // getUserProfile(id: string): Observable<User> {
-  //   return this.http.get<User>(API_URL + `/users/${id}`);
-  // }
+  getUserProfile(id: string): Observable<User> {
+    return this.http.get<User>(API_URL + `/users/${id}`);
+  }
   //
   // updateUserProfile(id: number, user: User): Observable<User> {
   //   return this.http.put<User>(API_URL + `/users/${id}`, user);

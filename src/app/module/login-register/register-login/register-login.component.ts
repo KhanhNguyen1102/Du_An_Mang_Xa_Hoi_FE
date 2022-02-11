@@ -40,6 +40,7 @@ export class RegisterLoginComponent implements OnInit {
               private userService: UserService) {
     this.min= moment(moment().subtract(29200, 'days').calendar()).format("YYYY-MM-DD")
     this.max= moment(moment().subtract(5840, 'days').calendar()).format("YYYY-MM-DD")
+    localStorage.clear();
   }
 
   ngOnInit() {
