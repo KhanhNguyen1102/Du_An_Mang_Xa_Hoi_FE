@@ -35,10 +35,10 @@ export class UserService {
   getUserProfile(id: string): Observable<User> {
     return this.http.get<User>(API_URL + `/users/${id}`);
   }
-  //
-  // updateUserProfile(id: number, user: User): Observable<User> {
-  //   return this.http.put<User>(API_URL + `/users/${id}`, user);
-  // }
+
+  updateUserProfile(id: number, user: User): Observable<User> {
+    return this.http.put<User>(API_URL + `/users/${id}`, user);
+  }
   // deleteUser(id: string){
   //   return this.http.delete<User>(API_URL + `/delete?id=`+ `${id}`);
   // }
