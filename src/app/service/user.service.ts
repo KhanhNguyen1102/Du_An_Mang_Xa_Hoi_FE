@@ -28,9 +28,9 @@ export class UserService {
   //   return this.http.put<User>(API_URL + `/new-password/${id}`, user);
   // }
   //
-  // userDetail(id: string): Observable<User> {
-  //   return this.http.get<User>(API_URL + `/users/${id}`);
-  // }
+  userDetail(id: string): Observable<User> {
+    return this.http.get<User>(API_URL + `/users/${id}`);
+  }
   //
   // getUserProfile(id: string): Observable<User> {
   //   return this.http.get<User>(API_URL + `/users/${id}`);
