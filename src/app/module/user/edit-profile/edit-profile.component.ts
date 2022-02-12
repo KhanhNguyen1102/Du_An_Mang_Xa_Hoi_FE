@@ -90,6 +90,10 @@ currentUser:any
         }
       });
   }
+  logout(){
+    localStorage.clear();
+    this.router.navigate(['/'])
+  }
   onFileSelected1(event:any) {
     var n1 = Date.now();
     const file1 = event.target.files[0];

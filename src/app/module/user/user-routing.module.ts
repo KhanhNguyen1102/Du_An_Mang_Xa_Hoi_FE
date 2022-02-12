@@ -4,6 +4,7 @@ import {EditProfileComponent} from "./edit-profile/edit-profile.component";
 import {FriendNearbyComponent} from "./friend-relation/friend-nearby/friend-nearby.component";
 import {NewsfeedComponent} from "./newsfeed/newsfeed.component";
 import {AccFriendComponent} from "./friend-relation/acc-friend/acc-friend.component";
+import {EditPasswordComponent} from "./edit-password/edit-password.component";
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path :'edit',
     component: EditProfileComponent
+  },
+  {
+    path :'password',
+    component: EditPasswordComponent
   }
 ];
 

@@ -8,6 +8,7 @@ import {HttpClientModule} from "@angular/common/http";
 import { FriendNearbyComponent } from './friend-relation/friend-nearby/friend-nearby.component';
 import { AccFriendComponent } from './friend-relation/acc-friend/acc-friend.component';
 import { NewsfeedComponent } from './newsfeed/newsfeed.component';
+import { EditPasswordComponent } from './edit-password/edit-password.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { NewsfeedComponent } from './newsfeed/newsfeed.component';
     EditProfileComponent,
     FriendNearbyComponent,
     AccFriendComponent,
-    NewsfeedComponent
+    NewsfeedComponent,
+    EditPasswordComponent
   ],
   imports: [
     CommonModule,
