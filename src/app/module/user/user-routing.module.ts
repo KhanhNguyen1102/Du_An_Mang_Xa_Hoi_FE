@@ -5,6 +5,7 @@ import {FriendNearbyComponent} from "./friend-relation/friend-nearby/friend-near
 import {NewsfeedComponent} from "./newsfeed/newsfeed.component";
 import {AccFriendComponent} from "./friend-relation/acc-friend/acc-friend.component";
 import {EditPasswordComponent} from "./edit-password/edit-password.component";
+import {UserDetailComponent} from "./user-detail/user-detail.component";
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path :'password',
     component: EditPasswordComponent
+  },
+  {
+    path :'user-detail',
+    component: UserDetailComponent
   }
 ];
 

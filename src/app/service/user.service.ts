@@ -23,7 +23,9 @@ export class UserService {
   login(user: User): Observable<User> {
     return this.http.post<User>(API_URL + '/login', user);
   }
-
+  matchPassword(user:User) :Observable<User> {
+    return this.http.post<User>(API_URL + '/matchPassword', user);
+  }
   // newPassword(user: User, id: number): Observable<User> {
   //   return this.http.put<User>(API_URL + `/new-password/${id}`, user);
   // }

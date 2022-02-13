@@ -9,6 +9,8 @@ import { FriendNearbyComponent } from './friend-relation/friend-nearby/friend-ne
 import { AccFriendComponent } from './friend-relation/acc-friend/acc-friend.component';
 import { NewsfeedComponent } from './newsfeed/newsfeed.component';
 import { EditPasswordComponent } from './edit-password/edit-password.component';
+import { UserDetailComponent } from './user-detail/user-detail.component';
+import { PeopleDetailComponent } from './people-detail/people-detail.component';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { EditPasswordComponent } from './edit-password/edit-password.component';
     FriendNearbyComponent,
     AccFriendComponent,
     NewsfeedComponent,
-    EditPasswordComponent
+    EditPasswordComponent,
+    UserDetailComponent,
+    PeopleDetailComponent
   ],
   imports: [
     CommonModule,

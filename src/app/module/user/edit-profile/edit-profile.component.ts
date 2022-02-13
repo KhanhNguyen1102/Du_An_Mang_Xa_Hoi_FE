@@ -22,8 +22,8 @@ currentUser:any
   url:string = "null";
   updateForm = new FormGroup({
     phone: new FormControl('',[Validators.required, Validators.pattern('^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$')]),
-    fullName: new FormControl('',[Validators.required,Validators.pattern('^[A-Za-z\\s]{1,}[\\.]{0,1}[A-Za-z\\s]{0,}$')]),
-    address: new FormControl('',[Validators.required,Validators.pattern('^[A-Za-z\\s]{1,}[\\.]{0,1}[A-Za-z\\s]{0,}$')]),
+    fullName: new FormControl('',[Validators.required,Validators.pattern('^([a-zA-Z0-9ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s]+)$/i')]),
+    address: new FormControl('',[Validators.required,Validators.pattern('^([a-zA-Z0-9ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s]+)$/i')]),
     favorite: new FormControl('',[Validators.required])
   });
   constructor(private router: Router,
@@ -40,8 +40,8 @@ currentUser:any
       this.cover = this.currentUser.cover;
       this.updateForm = new FormGroup({
         phone: new FormControl(this.currentUser.phone,[Validators.required, Validators.pattern('^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$')]),
-        fullName: new FormControl(this.currentUser.fullName,[Validators.required,Validators.pattern('^[A-Za-z\\s]{1,}[\\.]{0,1}[A-Za-z\\s]{0,}$')]),
-        address: new FormControl(this.currentUser.address,[Validators.required,Validators.pattern('^[A-Za-z\\s]{1,}[\\.]{0,1}[A-Za-z\\s]{0,}$')]),
+        fullName: new FormControl(this.currentUser.fullName,[Validators.required]),
+        address: new FormControl(this.currentUser.address,[Validators.required]),
         favorite: new FormControl(this.currentUser.favorite)
       });
     },error => {
@@ -61,6 +61,7 @@ currentUser:any
     if (this.fb1!= null){this.currentUser.cover=this.fb1}
     this.userService.updateUserProfile(this.currentUser.id,this.currentUser).subscribe(result1 =>{
       console.log("sửa thành công")
+      this.router.navigate(['user/user-detail'])
     },error => {
       console.log(error)
     });

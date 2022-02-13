@@ -103,7 +103,7 @@
           <div class="reg-options">
             <ul class="nav nav-tabs">
               <li class="active"><a href="#register" data-toggle="tab">Register</a></li>
-              <li><a href="#login" data-toggle="tab">Login</a></li>
+              <li><a id="showLogin" href="#login" data-toggle="tab">Login</a></li>
             </ul><!--Tabs End-->
           </div>
 
@@ -197,7 +197,7 @@
                     <input min="{{min}}" max="{{max}}" formControlName="newDateOfBirth" id="month" class="form-control input-group-lg" name="dateOfBirth" type="date">
                   </div>
                 </div>
-                <p><a href="#">Already have an account?</a></p>
+                <p><a (click)="showLogin()">Already have an account?</a></p>
                 <button class="btn btn-primary">Register Now</button>
               </form><!--Register Now Form Ends-->
 
