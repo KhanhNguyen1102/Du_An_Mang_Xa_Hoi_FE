@@ -5,14 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
-import { EditPostComponent } from './module/post/edit-post/edit-post.component';
-import { ListPostComponent } from './module/post/list-post/list-post.component';
-
+import { EditPostComponent } from './module/post/components/edit-post/edit-post.component';
+import { ListPostComponent } from './module/post/components/list-post/list-post.component';
 @NgModule({
   declarations: [
     AppComponent,
     EditPostComponent,
-    ListPostComponent
+    ListPostComponent,
   ],
   imports: [
     BrowserModule,

@@ -10,6 +10,7 @@ export class EditPostComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
 }
