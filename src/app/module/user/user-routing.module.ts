@@ -4,6 +4,7 @@ import {FriendNearbyComponent} from "./friend-relation/friend-nearby/friend-near
 import {NewsfeedComponent} from "./newsfeed/newsfeed.component";
 import {FriendRequestComponent} from "./friend-relation/friend-request/friend-request.component";
 import {ListFriendComponent} from "./friend-relation/list-friend/list-friend.component";
+import {DeleteFriendComponent} from "./friend-relation/delete-friend/delete-friend.component";
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'friends',
     component: ListFriendComponent
+  },
+  {
+    path: 'unFriend/:id',
+    component: DeleteFriendComponent
   }
 ];
 

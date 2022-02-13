@@ -6,6 +6,8 @@ import { FriendNearbyComponent } from './friend-relation/friend-nearby/friend-ne
 import { NewsfeedComponent } from './newsfeed/newsfeed.component';
 import {FriendRequestComponent} from "./friend-relation/friend-request/friend-request.component";
 import { ListFriendComponent } from './friend-relation/list-friend/list-friend.component';
+import { DeleteFriendComponent } from './friend-relation/delete-friend/delete-friend.component';
+import {AppRoutingModule} from "../../app-routing.module";
 
 
 @NgModule({
@@ -13,11 +15,12 @@ import { ListFriendComponent } from './friend-relation/list-friend/list-friend.c
     FriendNearbyComponent,
     NewsfeedComponent,
     FriendRequestComponent,
-    ListFriendComponent
+    ListFriendComponent,
+    DeleteFriendComponent
   ],
   imports: [
     CommonModule,
-    UserRoutingModule
+    UserRoutingModule,
   ]
 })
 export class UserModule { }

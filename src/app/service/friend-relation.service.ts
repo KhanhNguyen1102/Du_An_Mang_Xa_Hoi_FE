@@ -32,4 +32,12 @@ export class FriendRelationService {
   deleteRequest(idU: string, idRequest: string): Observable<FriendRelation> {
     return this.httpClient.delete<FriendRelation>(API_URL + `/${idRequest}/${idU}`);
   }
+
+  getAllFriend(idU: string): Observable<User[]> {
+  return this.httpClient.get<User[]>(API_URL + `/${idU}`);
+  }
+
+  unFriend(idU: string, idFriend: string): Observable<FriendRelation> {
+    return this.httpClient.delete<FriendRelation>(API_URL + `/${idFriend}/${idU}`);
+  }
 }
