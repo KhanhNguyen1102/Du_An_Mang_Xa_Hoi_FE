@@ -37,7 +37,7 @@ export class FriendNearbyComponent implements OnInit {
     this.friendRelationService.addFriend(this.idUser, idFriend).subscribe(() => {
       alert('Chờ xác nhận');
       this.ngOnInit();
-      this.router.navigate(['user/friend']);
+      this.router.navigate(['user/people-nearby']);
     });
   }
 }
