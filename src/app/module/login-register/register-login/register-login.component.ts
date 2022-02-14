@@ -58,7 +58,7 @@ export class RegisterLoginComponent implements OnInit {
       .subscribe((data: JWTResponse) => {
           localStorage.setItem('currentUser', JSON.stringify(data));
           localStorage.setItem('ACCESS_TOKEN', data.token);
-          localStorage.setItem('ROLE', data.roles[0].authority);
+          // localStorage.setItem('ROLE', data.roles[0].authority);
           localStorage.setItem('USERNAME', data.username);
           localStorage.setItem('USERID', data.id + "");
           if (data.roles[0].authority == "ROLE_ADMIN") {
