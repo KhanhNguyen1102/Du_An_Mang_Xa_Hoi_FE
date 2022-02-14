@@ -8,11 +8,18 @@ import {FriendRequestComponent} from "./friend-relation/friend-request/friend-re
 import {ListFriendComponent} from "./friend-relation/list-friend/list-friend.component";
 import {EditPasswordComponent} from "./edit-password/edit-password.component";
 import {UserDetailComponent} from "./user-detail/user-detail.component";
+import * as path from "path";
+import {NewsfeedDetailComponent} from "./newsfeed/newsfeed-detail/newsfeed-detail.component";
 
 const routes: Routes = [
   {
     path: 'newsfeed',
-    component: NewsfeedComponent
+    component: NewsfeedComponent,
+    children: [{
+      path: 'detail',
+  component: NewsfeedDetailComponent
+    }
+    ]
   },
   {
     path: 'people-nearby',

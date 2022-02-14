@@ -13,6 +13,7 @@ import {AppRoutingModule} from "../../app-routing.module";
 import { EditPasswordComponent } from './edit-password/edit-password.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { PeopleDetailComponent } from './people-detail/people-detail.component';
+import { NewsfeedDetailComponent } from './newsfeed/newsfeed-detail/newsfeed-detail.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { PeopleDetailComponent } from './people-detail/people-detail.component';
     FriendRequestComponent,
     ListFriendComponent,
     UserDetailComponent,
-    PeopleDetailComponent
+    PeopleDetailComponent,
+    NewsfeedDetailComponent
   ],
   imports: [
     CommonModule,
