@@ -13,4 +13,8 @@ export interface User {
   phoneNumber?:string,
   dateOfBirth?:string,
   accessToken?: string;
+  avatar?:string;
+  favorite?: string;
+  cover?:string;
+  address?:string;
 }

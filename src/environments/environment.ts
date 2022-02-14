@@ -4,7 +4,17 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:8080'
+  apiUrl: 'http://localhost:8080',
+  firebaseConfig :{
+    apiKey: "AIzaSyBvjeGded-q_KgnEwhMfA4leKVzSPpTVXo",
+    authDomain: "social-web-5068e.firebaseapp.com",
+    databaseUrl: "https://social-web-5068e-default-rtdb.firebaseio.com/",
+    projectId: "social-web-5068e",
+    storageBucket: "social-web-5068e.appspot.com",
+    messagingSenderId: "646383888939",
+    appId: "1:646383888939:web:5ec5d57450390d0e5d986e",
+    measurementId: "G-3HTS1B1GSK"
+  }
 };
 
 /*
