@@ -67,8 +67,6 @@ export class RegisterLoginComponent implements OnInit {
             this.userName=data.username;
             $('#exampleModal').modal('show')
             setTimeout( () => {$('#exampleModal').modal('hide');this.router.navigate([this.returnUrl])},2000)
-
-
           }
         },
         () => {
@@ -90,14 +88,15 @@ export class RegisterLoginComponent implements OnInit {
     console.log(newUser)
     this.userService.register(newUser).subscribe(
       success => {
-        $("#showLogin").click();
+        $('#registerSuccess').modal('show')
+        setTimeout( () => {$('#registerSuccess').modal('hide');$("#showLogin").click()},2000)
         this.loginForm = new FormGroup({
           username: new FormControl(this.registerForm.value.newUserName,[Validators.required]),
           password: new FormControl(this.registerForm.value.newPassWord,[Validators.required, Validators.minLength(6),Validators.maxLength(32)])
         });
         this.registerForm.reset()
       }, error1 => {
-        alert("Đăng kí thất bại")
+        $('#registerFail').modal('show')
       }
     )
   }
