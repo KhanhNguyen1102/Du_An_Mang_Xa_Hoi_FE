@@ -9,6 +9,7 @@ import {ListFriendComponent} from "./friend-relation/list-friend/list-friend.com
 import {DeleteFriendComponent} from "./friend-relation/delete-friend/delete-friend.component";
 import {EditPasswordComponent} from "./edit-password/edit-password.component";
 import {UserDetailComponent} from "./user-detail/user-detail.component";
+import {PeopleDetailComponent} from "./people-detail/people-detail.component";
 const routes: Routes = [
   {
     path: 'newsfeed',
@@ -41,6 +42,10 @@ const routes: Routes = [
   {
     path :'user-detail',
     component: UserDetailComponent
+  },
+  {
+    path: 'people-detail/:id',
+    component: PeopleDetailComponent
   }
 ];
 

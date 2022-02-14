@@ -21,13 +21,17 @@ export class UserDetailComponent implements OnInit {
     }
     // @ts-ignore
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'))
+    this.avatar = this.currentUser.avatar;
+    this.cover = this.currentUser.cover;
     this.userService.getUserProfile(this.currentUser.id).subscribe(result => {
       this.currentUser = result;
+      localStorage.setItem('currentUser',JSON.stringify(result));
       this.avatar = this.currentUser.avatar;
       this.cover = this.currentUser.cover;
     }, error => {
       console.log(error);
     })
+
   }
   logout(){
     localStorage.clear();

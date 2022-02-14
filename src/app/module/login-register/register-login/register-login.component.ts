@@ -16,6 +16,7 @@ export class RegisterLoginComponent implements OnInit {
   min:string ="" ;
   max:string ="";
   userName="";
+  currentUser: any;
   loginForm: FormGroup = new FormGroup({
     username: new FormControl('',[Validators.required]),
     password: new FormControl('',[Validators.required, Validators.minLength(6),Validators.maxLength(32)])
@@ -64,10 +65,17 @@ export class RegisterLoginComponent implements OnInit {
           if (data.roles[0].authority == "ROLE_ADMIN") {
             this.router.navigate([this.adminUrl])
           } else {
-            this.userName=data.username;
-            $('#exampleModal').modal('show')
-            setTimeout( () => {$('#exampleModal').modal('hide');this.router.navigate([this.returnUrl])},2000)
-          }
+            this.userService.getUserProfile(data.id+"").subscribe(result => {
+              this.currentUser = result;
+              localStorage.setItem('currentUser',JSON.stringify(result));
+              this.userName=data.username;
+              $('#exampleModal').modal('show')
+              setTimeout( () => {$('#exampleModal').modal('hide');this.router.navigate([this.returnUrl])},2000)
+
+            }, error => {
+              console.log(error);
+            })
+            }
         },
         () => {
           $('#error').modal('show')
