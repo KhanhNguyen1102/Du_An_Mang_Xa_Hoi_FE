@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {User} from "../../../../model/user";
 import {FriendRelationService} from "../../../../service/friend-relation.service";
 import {Router} from "@angular/router";
-
+declare var $:any;
 @Component({
   selector: 'app-friend-request',
   templateUrl: './friend-request.component.html',
@@ -12,7 +12,7 @@ export class FriendRequestComponent implements OnInit {
   currentUser: string = "";
   idUser: string | undefined;
   listFriendRequest!: User[];
-
+  usernameFriend: string | undefined;
   constructor(private friendRelationService: FriendRelationService,
               private router: Router) {
     // @ts-ignore
@@ -31,13 +31,14 @@ export class FriendRequestComponent implements OnInit {
     })
   }
 
-  acceptFriend(idUserRequest: string | undefined) {
+  acceptFriend(idUserRequest: string | undefined, usernameFriend: string | undefined) {
     console.log(idUserRequest);
+    this.usernameFriend = usernameFriend;
     // @ts-ignore
     this.friendRelationService.acceptFriend(this.idUser, idUserRequest).subscribe(() => {
-      alert('Kết bạn thành công');
+      $('#confirmRequest').modal('show')
+      setTimeout( () => {$('#confirmRequest').modal('hide');},2000);
       this.ngOnInit();
-      this.router.navigate(['user/requests']);
     });
   }
 
@@ -45,9 +46,10 @@ export class FriendRequestComponent implements OnInit {
     console.log(idUserRequest);
     // @ts-ignore
     this.friendRelationService.deleteRequest(this.idUser, idUserRequest).subscribe(() => {
-      alert('Hủy kết bạn thành công');
+      $('#deleteRequest').modal('show')
+      setTimeout( () => {$('#deleteRequest').modal('hide');},2000);
       this.ngOnInit();
-      this.router.navigate(['user/requests']);
+      // this.router.navigate(['user/requests']);
     });
   }
 }

@@ -198,7 +198,7 @@
                 <p class="text-muted">500m away</p>
               </div>
               <div class="col-md-3 col-sm-3">
-                <button class="btn btn-primary pull-right" (click)="addFriend(user.id)">Add Friend</button>
+                <button class="btn btn-primary pull-right" (click)="addFriend(user.id, user?.username)">Add Friend</button>
               </div>
             </div>
           </div>
@@ -326,7 +326,7 @@
         </button>
       </div>
       <div class="modal-body">
-<!--        <b>Welcome to Friend Finder {{userName}} !</b>-->
+        <b>Please wait {{usernameFriend}} accept your request !</b>
       </div>
       <div class="modal-footer">
       </div>

@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {User} from "../../../../model/user";
 import {FriendRelationService} from "../../../../service/friend-relation.service";
 import {Router} from "@angular/router";
-
+declare var $:any;
 @Component({
   selector: 'app-friend-nearby',
   templateUrl: './friend-nearby.component.html',
@@ -12,6 +12,7 @@ export class FriendNearbyComponent implements OnInit {
   currentUser: string = "";
   idUser: string | undefined;
   listUserNotFriend!: User[];
+  usernameFriend:  string | undefined;
 
   constructor(private friendRelationService: FriendRelationService,
               private router: Router) {
@@ -31,13 +32,15 @@ export class FriendNearbyComponent implements OnInit {
     })
   }
 
-  addFriend(idFriend: string | undefined) {
+  addFriend(idFriend: string | undefined, usernameFriend: string | undefined) {
     console.log(idFriend);
+    this.usernameFriend = usernameFriend;
     // @ts-ignore
     this.friendRelationService.addFriend(this.idUser, idFriend).subscribe(() => {
-      ;
+      $('#requestSuccess').modal('show')
+      setTimeout( () => {$('#requestSuccess').modal('hide');},2000);
       this.ngOnInit();
-      this.router.navigate(['user/people-nearby']);
+      // this.router.navigate(['user/people-nearby']);
     });
   }
 }
