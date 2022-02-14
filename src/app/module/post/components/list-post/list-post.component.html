@@ -161,8 +161,6 @@
             </div>
           </div><!-- Post Create Box End-->
 
-
-          ================================================= -->
           <tbody *ngFor="let ct of post ; index as i">
 
           <div class="post-content">
@@ -178,8 +176,8 @@
               <img src="http://placehold.it/300x300" alt="user" class="profile-photo-md pull-left" />
               <div class="post-detail">
                 <div class="user-info">
-                  <h5><a href="timeline.html" class="profile-link">Sarah Cruiz</a> <span class="following">following</span></h5>
-                  <p class="text-muted">{{ct.createAt}}</p>
+                  <h5><a href="timeline.html" class="profile-link">{{ct.user?.username}}</a> <span class="following">following</span></h5>
+                  <p class="text-muted">{{ct.createAt | date:"mm/dd/yyyy"}}</p>
                 </div>
                 <div class="reaction">
                   <a class="btn text-green"><i class="icon ion-thumbsup"></i> 49</a>
