@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AccFriendComponent } from './acc-friend.component';
+import { DeleteFriendComponent } from './delete-friend.component';
 
-describe('AccFriendComponent', () => {
-  let component: AccFriendComponent;
-  let fixture: ComponentFixture<AccFriendComponent>;
+describe('DeleteFriendComponent', () => {
+  let component: DeleteFriendComponent;
+  let fixture: ComponentFixture<DeleteFriendComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AccFriendComponent ]
+      declarations: [ DeleteFriendComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AccFriendComponent);
+    fixture = TestBed.createComponent(DeleteFriendComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

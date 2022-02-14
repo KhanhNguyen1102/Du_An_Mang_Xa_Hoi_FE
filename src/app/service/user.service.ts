@@ -23,22 +23,24 @@ export class UserService {
   login(user: User): Observable<User> {
     return this.http.post<User>(API_URL + '/login', user);
   }
-
+  matchPassword(user:User) :Observable<User> {
+    return this.http.post<User>(API_URL + '/matchPassword', user);
+  }
   // newPassword(user: User, id: number): Observable<User> {
   //   return this.http.put<User>(API_URL + `/new-password/${id}`, user);
   // }
   //
-  // userDetail(id: string): Observable<User> {
-  //   return this.http.get<User>(API_URL + `/users/${id}`);
-  // }
+  userDetail(id: string): Observable<User> {
+    return this.http.get<User>(API_URL + `/users/${id}`);
+  }
   //
   getUserProfile(id: string): Observable<User> {
     return this.http.get<User>(API_URL + `/users/${id}`);
   }
-  //
-  // updateUserProfile(id: number, user: User): Observable<User> {
-  //   return this.http.put<User>(API_URL + `/users/${id}`, user);
-  // }
+
+  updateUserProfile(id: number, user: User): Observable<User> {
+    return this.http.put<User>(API_URL + `/users/${id}`, user);
+  }
   // deleteUser(id: string){
   //   return this.http.delete<User>(API_URL + `/delete?id=`+ `${id}`);
   // }

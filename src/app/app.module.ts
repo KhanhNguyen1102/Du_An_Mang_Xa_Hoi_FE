@@ -5,6 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
+import {environment} from "../environments/environment";
+import {AngularFireStorageModule} from "@angular/fire/compat/storage";
+import {AngularFireModule} from "@angular/fire/compat";
 import { EditPostComponent } from './module/post/components/edit-post/edit-post.component';
 import { ListPostComponent } from './module/post/components/list-post/list-post.component';
 import { CreatePostComponent } from './module/post/components/create-post/create-post.component';
@@ -20,7 +23,10 @@ import { CreatePostComponent } from './module/post/components/create-post/create
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularFireStorageModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig, "cloud")
+
   ],
   providers: [],
   bootstrap: [AppComponent]

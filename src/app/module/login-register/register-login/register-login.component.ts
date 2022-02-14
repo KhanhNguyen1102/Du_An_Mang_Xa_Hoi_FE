@@ -6,6 +6,7 @@ import {AuthenticationService} from "../../../service/authentication.service";
 import {UserService} from "../../../service/user.service";
 import {JWTResponse} from "../../../model/JWTResponse";
 import * as moment from 'moment';
+declare var $:any;
 @Component({
   selector: 'app-register-login',
   templateUrl: './register-login.component.html',
@@ -14,6 +15,7 @@ import * as moment from 'moment';
 export class RegisterLoginComponent implements OnInit {
   min:string ="" ;
   max:string ="";
+  userName="";
   loginForm: FormGroup = new FormGroup({
     username: new FormControl('',[Validators.required]),
     password: new FormControl('',[Validators.required, Validators.minLength(6),Validators.maxLength(32)])
@@ -44,7 +46,8 @@ export class RegisterLoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'] || '/';
+    // this.returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'] || '/';
+    this.returnUrl = 'user/user-detail';
     this.adminUrl = '/admin'
   }
 
@@ -56,17 +59,20 @@ export class RegisterLoginComponent implements OnInit {
         console.log(data)
           localStorage.setItem('currentUser', JSON.stringify(data));
           localStorage.setItem('ACCESS_TOKEN', data.token);
-          localStorage.setItem('ROLE', data.roles[0].authority);
+          // localStorage.setItem('ROLE', data.roles[0].authority);
           localStorage.setItem('USERNAME', data.username);
           localStorage.setItem('USERID', data.id + "");
           if (data.roles[0].authority == "ROLE_ADMIN") {
             this.router.navigate([this.adminUrl])
           } else {
-            this.router.navigate([this.returnUrl]);
+            this.userName=data.username;
+            $('#exampleModal').modal('show')
+            setTimeout( () => {$('#exampleModal').modal('hide');this.router.navigate([this.returnUrl])},2000)
           }
         },
         () => {
-          alert("Tài khoản của bạn đã bị khoá hoặc sai mật khẩu!");
+          $('#error').modal('show')
+          // alert("Tài khoản của bạn đã bị khoá hoặc sai mật khẩu!");
           this.loading = false;
         });
   }
@@ -83,11 +89,19 @@ export class RegisterLoginComponent implements OnInit {
     console.log(newUser)
     this.userService.register(newUser).subscribe(
       success => {
-        alert("Đăng kí thành công");
+        $('#registerSuccess').modal('show')
+        setTimeout( () => {$('#registerSuccess').modal('hide');$("#showLogin").click()},2000)
+        this.loginForm = new FormGroup({
+          username: new FormControl(this.registerForm.value.newUserName,[Validators.required]),
+          password: new FormControl(this.registerForm.value.newPassWord,[Validators.required, Validators.minLength(6),Validators.maxLength(32)])
+        });
         this.registerForm.reset()
       }, error1 => {
-        alert("Đăng kí thất bại")
+        $('#registerFail').modal('show')
       }
     )
+  }
+  showLogin(){
+    $("#showLogin").click();
   }
 }
