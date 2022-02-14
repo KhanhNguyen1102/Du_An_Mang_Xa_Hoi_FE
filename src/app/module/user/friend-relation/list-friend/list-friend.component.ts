@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {User} from "../../../../model/user";
 import {FriendRelationService} from "../../../../service/friend-relation.service";
-import {Router} from "@angular/router";
-
+import {ActivatedRoute, ParamMap, Router} from "@angular/router";
+declare var $:any;
 @Component({
   selector: 'app-list-friend',
   templateUrl: './list-friend.component.html',
@@ -12,9 +12,10 @@ export class ListFriendComponent implements OnInit {
   currentUser: string = "";
   idUser: string | undefined;
   listFriend!: User[];
-
+  usernameFriend: string | undefined;
   constructor(private friendRelationService: FriendRelationService,
-              private router: Router) {
+              private router: Router,
+              private activatedRoute: ActivatedRoute) {
     // @ts-ignore
     this.currentUser = localStorage.getItem("currentUser")
     console.log(this.currentUser);
@@ -28,7 +29,20 @@ export class ListFriendComponent implements OnInit {
       console.log(result);
     }, error => {
       console.log(error)
-    })
+    });
+  }
+
+  cancelRelationship(idFriend: string | undefined, username: string | undefined){
+    this.usernameFriend = username;
+    // @ts-ignore
+      this.friendRelationService.unFriend(this.idUser, idFriend).subscribe(() => {
+        $('#unFriendSuccess').modal('show')
+        setTimeout(() => {
+          $('#unFriendSuccess').modal('hide');
+        }, 3000);
+        this.ngOnInit();
+        // this.router.navigate(['user/friends']);
+      });
   }
 }
 

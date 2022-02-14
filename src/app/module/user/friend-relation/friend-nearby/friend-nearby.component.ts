@@ -38,7 +38,7 @@ export class FriendNearbyComponent implements OnInit {
     // @ts-ignore
     this.friendRelationService.addFriend(this.idUser, idFriend).subscribe(() => {
       $('#requestSuccess').modal('show')
-      setTimeout( () => {$('#requestSuccess').modal('hide');},2000);
+      setTimeout( () => {$('#requestSuccess').modal('hide');},3000);
       this.ngOnInit();
       // this.router.navigate(['user/people-nearby']);
     });

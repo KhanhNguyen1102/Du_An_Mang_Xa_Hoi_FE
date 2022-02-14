@@ -37,7 +37,7 @@ export class FriendRequestComponent implements OnInit {
     // @ts-ignore
     this.friendRelationService.acceptFriend(this.idUser, idUserRequest).subscribe(() => {
       $('#confirmRequest').modal('show')
-      setTimeout( () => {$('#confirmRequest').modal('hide');},2000);
+      setTimeout( () => {$('#confirmRequest').modal('hide');},3000);
       this.ngOnInit();
     });
   }
@@ -47,7 +47,7 @@ export class FriendRequestComponent implements OnInit {
     // @ts-ignore
     this.friendRelationService.deleteRequest(this.idUser, idUserRequest).subscribe(() => {
       $('#deleteRequest').modal('show')
-      setTimeout( () => {$('#deleteRequest').modal('hide');},2000);
+      setTimeout( () => {$('#deleteRequest').modal('hide');},3000);
       this.ngOnInit();
       // this.router.navigate(['user/requests']);
     });
