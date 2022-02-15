@@ -177,13 +177,19 @@
                 <div class="card-info">
                   <img src="http://placehold.it/300x300" alt="user" class="profile-photo-lg" />
                   <div class="friend-info">
-<!--                    <a href="#" class="pull-right text-green">My Friend</a>-->
-                    <div class="dropdown">
-                      <button class="nut_dropdown btn btn-primary pull-right">Friends</button>
-                      <div class="noidung_dropdown">
-                        <a href="#">Profile</a>
-                        <a (click)="cancelRelationship(friend.id, friend.username)">Unfriend</a>
-<!--                        <a href="#">Đường Dẫn 3</a>-->
+                    <div class="row">
+                      <div class="col-md-6 col-sm-6">
+                      <h5><a href="timeline.html" class="profile-link">{{friend?.username}}</a></h5>
+                      <p>Student at Havard</p>
+                      </div>
+                      <div class="col-md-6 col-sm-6">
+                        <div class="dropdown">
+                          <button class="nut_dropdown btn btn-primary pull-right">Friends</button>
+                          <div class="noidung_dropdown">
+                            <a href="#">Profile</a>
+                            <a (click)="cancelRelationship(friend.id, friend.username)">Unfriend</a>
+                          </div>
+                        </div>
                       </div>
                     </div>
                     <div class="row">
