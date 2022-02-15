@@ -11,6 +11,7 @@ import {UserDetailComponent} from "./user-detail/user-detail.component";
 import * as path from "path";
 import {NewsfeedDetailComponent} from "./newsfeed/newsfeed-detail/newsfeed-detail.component";
 
+import {PeopleDetailComponent} from "./people-detail/people-detail.component";
 const routes: Routes = [
   {
     path: 'newsfeed',
@@ -44,6 +45,10 @@ const routes: Routes = [
   {
     path: 'user-detail',
     component: UserDetailComponent
+  },
+  {
+    path: 'people-detail/:id',
+    component: PeopleDetailComponent
   }
 ];
 
