@@ -9,7 +9,6 @@ import { FriendNearbyComponent } from './friend-relation/friend-nearby/friend-ne
 import { NewsfeedComponent } from './newsfeed/newsfeed.component';
 import {FriendRequestComponent} from "./friend-relation/friend-request/friend-request.component";
 import { ListFriendComponent } from './friend-relation/list-friend/list-friend.component';
-import { DeleteFriendComponent } from './friend-relation/delete-friend/delete-friend.component';
 import {AppRoutingModule} from "../../app-routing.module";
 import { EditPasswordComponent } from './edit-password/edit-password.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
@@ -24,7 +23,6 @@ import { PeopleDetailComponent } from './people-detail/people-detail.component';
     NewsfeedComponent,
     FriendRequestComponent,
     ListFriendComponent,
-    DeleteFriendComponent,
     UserDetailComponent,
     PeopleDetailComponent
   ],
