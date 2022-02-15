@@ -12,27 +12,28 @@ import * as path from "path";
 import {NewsfeedDetailComponent} from "./newsfeed/newsfeed-detail/newsfeed-detail.component";
 
 import {PeopleDetailComponent} from "./people-detail/people-detail.component";
+import {TimelineAboutComponent} from "./user-detail/timeline-about/timeline-about.component";
+
 const routes: Routes = [
   {
     path: 'newsfeed',
     component: NewsfeedComponent,
     children: [{
       path: 'detail',
-  component: NewsfeedDetailComponent
-    }
+      component: NewsfeedDetailComponent
+    }, {
+      path: 'people-nearby',
+      component: FriendNearbyComponent
+    },
+      {
+        path: 'requests',
+        component: FriendRequestComponent
+      },
+      {
+        path: 'friends',
+        component: ListFriendComponent
+      }
     ]
-  },
-  {
-    path: 'people-nearby',
-    component: FriendNearbyComponent
-  },
-  {
-    path: 'requests',
-    component: FriendRequestComponent
-  },
-  {
-    path: 'friends',
-    component: ListFriendComponent
   },
   {
     path: 'edit',
@@ -44,7 +45,11 @@ const routes: Routes = [
   },
   {
     path: 'user-detail',
-    component: UserDetailComponent
+    component: UserDetailComponent,
+    children: [{
+      path: 'timeline',
+      component: TimelineAboutComponent
+    }]
   },
   {
     path: 'people-detail/:id',

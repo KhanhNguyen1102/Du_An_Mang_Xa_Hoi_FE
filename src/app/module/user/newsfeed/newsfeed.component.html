@@ -13,7 +13,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index-register.html"><img src="./assets/images/logo.png" alt="logo"/></a>
+        <a class="navbar-brand" routerLink="detail"><img src="./assets/images/logo.png" alt="logo"/></a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
@@ -23,18 +23,18 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                aria-expanded="false">Home <span><img src="images/down-arrow.png" alt=""/></span></a>
             <ul class="dropdown-menu newsfeed-home">
-              <li><a href="index.html">Landing Page 1</a></li>
-              <li><a href="index-register.html">Landing Page 2</a></li>
+              <li><a routerLink="/user/newsfeed/detail">Newsfeed</a></li>
+<!--              <li><a href="index-register.html">Landing Page 2</a></li>-->
             </ul>
           </li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                aria-expanded="false">Newsfeed <span><img src="images/down-arrow.png" alt=""/></span></a>
             <ul class="dropdown-menu newsfeed-home">
-              <li><a routerLink="/user/newsfeed">Newsfeed</a></li>
-              <li><a routerLink="/user/requests">Friend Requests</a></li>
-              <li><a routerLink="/user/people-nearby">Friend Suggestions</a></li>
-              <li><a routerLink="/user/friends">My friends</a></li>
+              <li><a routerLink="/user/newsfeed/detail">Newsfeed</a></li>
+              <li><a routerLink="/user/newsfeed/requests">Friend Requests</a></li>
+              <li><a routerLink="/user/newsfeed/friends">My friends</a></li>
+              <li><a routerLink="/user/newsfeed/people-nearby">Friend Suggestions</a></li>
               <li><a href="newsfeed-messages.html">Chatroom</a></li>
               <li><a href="newsfeed-images.html">Images</a></li>
             </ul>
@@ -45,11 +45,7 @@
             <ul class="dropdown-menu login">
               <li><a href="timeline.html">Timeline</a></li>
               <li><a routerLink="/user/user-detail">Timeline About</a></li>
-              <li><a href="timeline-album.html">Timeline Album</a></li>
               <li><a href="timeline-friends.html">Timeline Friends</a></li>
-              <li><a href="edit-profile-basic.html">Edit: Basic Info</a></li>
-              <li><a href="edit-profile-work-edu.html">Edit: Work</a></li>
-              <li><a href="edit-profile-interests.html">Edit: Interests</a></li>
               <li><a href="edit-profile-settings.html">Account Settings</a></li>
               <li><a href="edit-profile-password.html">Change Password</a></li>
             </ul>
@@ -60,10 +56,10 @@
             <ul class="dropdown-menu page-list">
               <li><a href="index.html">Landing Page 1</a></li>
               <li><a href="index-register.html">Landing Page 2</a></li>
-              <li><a routerLink="/user/newsfeed">Newsfeed</a></li>
-              <li><a routerLink="/user/requests">Friend Requests</a></li>
-              <li><a routerLink="/user/friends">My friends</a></li>
-              <li><a routerLink="/user/people-nearby">Friend Suggestions</a></li>
+              <li><a routerLink="/user/newsfeed/detail">Newsfeed</a></li>
+              <li><a routerLink="/user/newsfeed/requests">Friend Requests</a></li>
+              <li><a routerLink="/user/newsfeed/friends">My friends</a></li>
+              <li><a routerLink="/user/newsfeed/people-nearby">Friend Suggestions</a></li>
               <li><a href="newsfeed-messages.html">Chatroom</a></li>
               <li><a href="newsfeed-images.html">Images</a></li>
               <li><a href="timeline.html">Timeline</a></li>
@@ -97,22 +93,22 @@
       <div class="col-md-3 static">
         <!--        Hiển thị thông tin cá nhân user-->
         <div class="profile-card">
-          <img src="http://placehold.it/300x300" alt="user" class="profile-photo"/>
+          <img src="{{userDetail?.avatar}}" alt="user" class="profile-photo"/>
           <h5><a href="timeline.html" class="text-white">{{userDetail?.username}}</a></h5>
-          <a href="#" class="text-white"><i class="ion ion-android-person-add"></i> 1,299 followers</a>
+          <a href="#" class="text-white"><i class="ion ion-android-person-add"></i> {{listFriend?.length}} friends</a>
         </div><!--profile card ends-->
         <ul class="nav-news-feed">
           <li><i class="icon ion-ios-paper"></i>
-            <div><a routerLink="/user/newfeed">My Newsfeed</a></div>
+            <div><a routerLink="/user/newsfeed/detail">My Newsfeed</a></div>
           </li>
           <li><i class="icon ion-ios-people"></i>
-            <div><a routerLink="/user/requests">Friend Request</a></div>
+            <div><a routerLink="/user/newsfeed/requests">Friend Request</a></div>
           </li>
           <li><i class="icon ion-ios-people-outline"></i>
-            <div><a routerLink="/user/friends">Friends</a></div>
+            <div><a routerLink="/user/newsfeed/friends">Friends</a></div>
           </li>
           <li><i class="icon ion-ios-people"></i>
-            <div><a routerLink="/user/people-nearby">People Suggestions</a></div>
+            <div><a routerLink="/user/newsfeed/people-nearby">People Suggestions</a></div>
           </li>
           <li><i class="icon ion-chatboxes"></i>
             <div><a href="newsfeed-messages.html">Messages</a></div>
@@ -157,7 +153,35 @@
         </div><!--chat block ends-->
       </div>
 
-      <router-outlet></router-outlet>
+      <div class="col-md-7">
+
+        <!-- Post Create Box
+        ================================================= -->
+        <div class="create-post">
+          <div class="row">
+            <div class="col-md-7 col-sm-7">
+              <div class="form-group">
+                <img src="http://placehold.it/300x300" alt="" class="profile-photo-md"/>
+                <textarea name="texts" id="exampleTextarea" cols="30" rows="1" class="form-control"
+                          placeholder="Write what you wish"></textarea>
+              </div>
+            </div>
+            <div class="col-md-5 col-sm-5">
+              <div class="tools">
+                <ul class="publishing-tools list-inline">
+                  <li><a href="#"><i class="ion-compose"></i></a></li>
+                  <li><a href="#"><i class="ion-images"></i></a></li>
+                  <li><a href="#"><i class="ion-ios-videocam"></i></a></li>
+                  <li><a href="#"><i class="ion-map"></i></a></li>
+                </ul>
+                <button class="btn btn-primary pull-right">Publish</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <router-outlet></router-outlet>
+      </div>
+
 
       <!-- Newsfeed Common Side Bar Right
       ================================================= -->

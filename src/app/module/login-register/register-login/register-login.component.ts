@@ -48,7 +48,7 @@ export class RegisterLoginComponent implements OnInit {
 
   ngOnInit() {
     // this.returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'] || '/';
-    this.returnUrl = 'user/user-detail';
+    this.returnUrl = 'user/user-detail/timeline';
     this.adminUrl = '/admin'
   }
 

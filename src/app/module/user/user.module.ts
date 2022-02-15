@@ -14,6 +14,7 @@ import { EditPasswordComponent } from './edit-password/edit-password.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { PeopleDetailComponent } from './people-detail/people-detail.component';
 import { NewsfeedDetailComponent } from './newsfeed/newsfeed-detail/newsfeed-detail.component';
+import { TimelineAboutComponent } from './user-detail/timeline-about/timeline-about.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { NewsfeedDetailComponent } from './newsfeed/newsfeed-detail/newsfeed-det
     ListFriendComponent,
     UserDetailComponent,
     PeopleDetailComponent,
-    NewsfeedDetailComponent
+    NewsfeedDetailComponent,
+    TimelineAboutComponent
   ],
   imports: [
     CommonModule,
