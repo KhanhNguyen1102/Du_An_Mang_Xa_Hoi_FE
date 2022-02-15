@@ -16,7 +16,7 @@ export class PeopleDetailComponent implements OnInit {
   cover: string = "";
   url: string = "null";
   friendList : User[]|undefined;
-  mutualFriend :string = "";
+  mutualFriend :User[]|undefined;
   constructor(private router: Router,
               private userService: UserService,
               private activatedRoute: ActivatedRoute,
@@ -39,6 +39,12 @@ export class PeopleDetailComponent implements OnInit {
         this.friendRelationService.getAllFriend(this.peopleDetail.id+"").subscribe(result => {
           this.friendList = result
           console.log(this.friendList)
+          this.friendRelationService.getListMutualFriend(this.currentUser.id+"",this.peopleDetail.id+"").subscribe(result => {
+            this.mutualFriend = result
+            console.log(this.mutualFriend)
+          }, error => {
+            console.log(error);
+          })
         }, error => {
           console.log(error);
         })

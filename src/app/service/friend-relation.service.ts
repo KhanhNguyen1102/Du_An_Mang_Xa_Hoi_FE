@@ -36,6 +36,9 @@ export class FriendRelationService {
   getAllFriend(idU: string): Observable<User[]> {
   return this.httpClient.get<User[]>(API_URL + `/${idU}`);
   }
+  getListMutualFriend(idU: string,idPeople: string): Observable<User[]> {
+    return this.httpClient.get<User[]>(API_URL + `/listMutualFriend/${idU}/${idPeople}`);
+  }
 
   unFriend(idU: string, idFriend: string): Observable<FriendRelation> {
     return this.httpClient.delete<FriendRelation>(API_URL + `/${idFriend}/${idU}`);
