@@ -96,8 +96,8 @@
         <!--        Hiển thị thông tin cá nhân user-->
         <div class="profile-card">
           <img src="{{userDetail?.avatar}}" alt="user" class="profile-photo"/>
-          <h5><a href="timeline.html" class="text-white">{{userDetail?.username}}</a></h5>
-          <a href="#" class="text-white"><i class="ion ion-android-person-add"></i> {{listFriend?.length}} friends</a>
+          <h5><a routerLink="/user/user-detail/timeline" class="text-white">{{userDetail?.username}}</a></h5>
+          <a routerLink="/user/user-detail/timeline-friends" class="text-white"><i class="ion ion-android-person-add"></i> {{listFriend?.length}} friends</a>
         </div><!--profile card ends-->
         <ul class="nav-news-feed">
           <li><i class="icon ion-ios-paper"></i>

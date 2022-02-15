@@ -10,14 +10,14 @@
           <div class="friend-info">
             <div class="row">
               <div class="col-md-6 col-sm-6">
-                <h5><a href="timeline.html" class="profile-link">{{friend?.username}}</a></h5>
-                <p>Student at Havard</p>
+                <h5><a routerLink="/user/people-detail/{{friend.id}}" class="profile-link">{{friend?.username}}</a></h5>
+                <p>{{friend.address}}</p>
               </div>
               <div class="col-md-6 col-sm-6">
                 <div class="dropdown">
                   <button class="nut_dropdown btn btn-primary pull-right">Friends</button>
                   <div class="noidung_dropdown">
-                    <a href="#">Profile</a>
+                    <a routerLink="/user/people-detail/{{friend.id}}">Profile</a>
                     <a (click)="cancelRelationship(friend.id, friend.username)">Unfriend</a>
                   </div>
                 </div>
