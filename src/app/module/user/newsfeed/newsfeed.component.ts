@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {UserService} from "../../../service/user.service";
 import {User} from "../../../model/user";
 import {FriendRelationService} from "../../../service/friend-relation.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-newsfeed',
@@ -15,7 +16,8 @@ export class NewsfeedComponent implements OnInit {
   listFriend!: User[];
 
   constructor(private userService: UserService,
-              private friendRelationService: FriendRelationService) {
+              private friendRelationService: FriendRelationService,
+              private router: Router) {
     // @ts-ignore
     this.currentUser = localStorage.getItem("currentUser")
     console.log(this.currentUser);
@@ -36,6 +38,11 @@ export class NewsfeedComponent implements OnInit {
     }, error => {
       console.log(error)
     })
+  }
+
+  logout() {
+    localStorage.clear();
+    this.router.navigate(['/'])
   }
 
 }

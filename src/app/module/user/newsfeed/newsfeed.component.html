@@ -54,23 +54,25 @@
             <a href="#" class="dropdown-toggle pages" data-toggle="dropdown" role="button" aria-haspopup="true"
                aria-expanded="false">All Pages <span><img src="images/down-arrow.png" alt=""/></span></a>
             <ul class="dropdown-menu page-list">
-              <li><a href="index.html">Landing Page 1</a></li>
-              <li><a href="index-register.html">Landing Page 2</a></li>
               <li><a routerLink="/user/newsfeed/detail">Newsfeed</a></li>
+<!--              <li><a href="index-register.html">Landing Page 2</a></li>-->
+<!--              <li><a routerLink="/user/newsfeed/detail">Newsfeed</a></li>-->
               <li><a routerLink="/user/newsfeed/requests">Friend Requests</a></li>
               <li><a routerLink="/user/newsfeed/friends">My friends</a></li>
               <li><a routerLink="/user/newsfeed/people-nearby">Friend Suggestions</a></li>
               <li><a href="newsfeed-messages.html">Chatroom</a></li>
               <li><a href="newsfeed-images.html">Images</a></li>
               <li><a href="timeline.html">Timeline</a></li>
-              <li><a routerLink="/user/user-detail">Timeline About</a></li>
-              <li><a href="timeline-album.html">Timeline Album</a></li>
-              <li><a href="timeline-friends.html">Timeline Friends</a></li>
-              <li><a href="edit-profile-basic.html">Edit Profile</a></li>
-              <li><a href="contact.html">Contact Us</a></li>
+              <li><a routerLink="/user/user-detail/timeline">Timeline About</a></li>
+              <li><a routerLink="/user/user-detail/timeline-friends">Timeline Friends</a></li>
+              <li><a routerLink="/user/edit">Edit Profile</a></li>
+              <li><a routerLink="/user/password">Change Password</a></li>
             </ul>
           </li>
-          <li class="dropdown"><a href="contact.html">Contact</a></li>
+          <li class="dropdown"><a>{{userDetail?.username}}</a></li>
+          <li class="dropdown"><img style="width: 40px;height: 40px;border-radius: 50%;margin-top: 8px" src="{{userDetail?.avatar}}"
+                                    alt=""></li>
+          <li class="dropdown"><a (click)="logout()">Logout</a></li>
         </ul>
         <form class="navbar-form navbar-right hidden-sm">
           <div class="form-group">
