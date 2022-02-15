@@ -61,7 +61,7 @@ currentUser:any
     if (this.fb1!= null){this.currentUser.cover=this.fb1}
     this.userService.updateUserProfile(this.currentUser.id,this.currentUser).subscribe(result1 =>{
       console.log("sửa thành công")
-      this.router.navigate(['user/user-detail'])
+      this.router.navigate(['user/user-detail/timeline'])
     },error => {
       console.log(error)
     });
