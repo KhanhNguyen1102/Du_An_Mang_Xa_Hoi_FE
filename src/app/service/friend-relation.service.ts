@@ -43,4 +43,8 @@ export class FriendRelationService {
   unFriend(idU: string, idFriend: string): Observable<FriendRelation> {
     return this.httpClient.delete<FriendRelation>(API_URL + `/${idFriend}/${idU}`);
   }
+
+  findRelationByIdUserAndIdFriend(idU: string, idFriend: string): Observable<FriendRelation> {
+    return this.httpClient.get<FriendRelation>(API_URL + `/${idU}/${idFriend}`);
+  }
 }

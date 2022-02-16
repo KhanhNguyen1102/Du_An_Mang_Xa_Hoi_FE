@@ -18,6 +18,7 @@ import { TimelineAboutComponent } from './user-detail/timeline-about/timeline-ab
 import { TimelineFriendsComponent } from './user-detail/timeline-friends/timeline-friends.component';
 import { MutualFriendComponent } from './people-detail/mutual-friend/mutual-friend.component';
 import { PeopleDetailAboutComponent } from './people-detail/people-detail-about/people-detail-about.component';
+import { PeopleDetailFriendsComponent } from './people-detail/people-detail-friends/people-detail-friends.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { PeopleDetailAboutComponent } from './people-detail/people-detail-about/
     TimelineAboutComponent,
     TimelineFriendsComponent,
     MutualFriendComponent,
-    PeopleDetailAboutComponent
+    PeopleDetailAboutComponent,
+    PeopleDetailFriendsComponent
   ],
   imports: [
     CommonModule,

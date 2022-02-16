@@ -13,7 +13,6 @@ declare var $: any;
 })
 export class MutualFriendComponent implements OnInit {
   currentUser: any
-  peopleDetail: any
   url: string = "null";
   mutualFriend: User[] | undefined;
   usernameFriend: string | undefined;

@@ -16,6 +16,7 @@ import {TimelineAboutComponent} from "./user-detail/timeline-about/timeline-abou
 import {TimelineFriendsComponent} from "./user-detail/timeline-friends/timeline-friends.component";
 import {PeopleDetailAboutComponent} from "./people-detail/people-detail-about/people-detail-about.component";
 import {MutualFriendComponent} from "./people-detail/mutual-friend/mutual-friend.component";
+import {PeopleDetailFriendsComponent} from "./people-detail/people-detail-friends/people-detail-friends.component";
 
 const routes: Routes = [
   {
@@ -68,6 +69,10 @@ const routes: Routes = [
       {
         path: 'mutual-friend/:id',
         component: MutualFriendComponent
+      },
+      {
+        path: 'people-detail-friends/:id',
+        component: PeopleDetailFriendsComponent
       }
     ]
   }
