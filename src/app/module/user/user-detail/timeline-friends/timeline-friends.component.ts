@@ -1,16 +1,16 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from "../../../../model/user";
 import {FriendRelationService} from "../../../../service/friend-relation.service";
-import {ActivatedRoute, ParamMap, Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 declare var $: any;
 
 @Component({
-  selector: 'app-list-friend',
-  templateUrl: './list-friend.component.html',
-  styleUrls: ['./list-friend.component.css']
+  selector: 'app-timeline-friends',
+  templateUrl: './timeline-friends.component.html',
+  styleUrls: ['./timeline-friends.component.css']
 })
-export class ListFriendComponent implements OnInit {
+export class TimelineFriendsComponent implements OnInit {
   currentUser: string = "";
   idUser: string | undefined;
   listFriend!: User[];
@@ -48,5 +48,3 @@ export class ListFriendComponent implements OnInit {
     });
   }
 }
-
-

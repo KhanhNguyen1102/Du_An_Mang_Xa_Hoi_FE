@@ -13,6 +13,9 @@ import {AppRoutingModule} from "../../app-routing.module";
 import { EditPasswordComponent } from './edit-password/edit-password.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { PeopleDetailComponent } from './people-detail/people-detail.component';
+import { NewsfeedDetailComponent } from './newsfeed/newsfeed-detail/newsfeed-detail.component';
+import { TimelineAboutComponent } from './user-detail/timeline-about/timeline-about.component';
+import { TimelineFriendsComponent } from './user-detail/timeline-friends/timeline-friends.component';
 
 
 @NgModule({
@@ -24,7 +27,10 @@ import { PeopleDetailComponent } from './people-detail/people-detail.component';
     FriendRequestComponent,
     ListFriendComponent,
     UserDetailComponent,
-    PeopleDetailComponent
+    PeopleDetailComponent,
+    NewsfeedDetailComponent,
+    TimelineAboutComponent,
+    TimelineFriendsComponent
   ],
   imports: [
     CommonModule,
