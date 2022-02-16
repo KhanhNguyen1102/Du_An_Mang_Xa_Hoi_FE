@@ -16,6 +16,8 @@ import { PeopleDetailComponent } from './people-detail/people-detail.component';
 import { NewsfeedDetailComponent } from './newsfeed/newsfeed-detail/newsfeed-detail.component';
 import { TimelineAboutComponent } from './user-detail/timeline-about/timeline-about.component';
 import { TimelineFriendsComponent } from './user-detail/timeline-friends/timeline-friends.component';
+import { MutualFriendComponent } from './people-detail/mutual-friend/mutual-friend.component';
+import { PeopleDetailAboutComponent } from './people-detail/people-detail-about/people-detail-about.component';
 
 
 @NgModule({
@@ -30,7 +32,9 @@ import { TimelineFriendsComponent } from './user-detail/timeline-friends/timelin
     PeopleDetailComponent,
     NewsfeedDetailComponent,
     TimelineAboutComponent,
-    TimelineFriendsComponent
+    TimelineFriendsComponent,
+    MutualFriendComponent,
+    PeopleDetailAboutComponent
   ],
   imports: [
     CommonModule,

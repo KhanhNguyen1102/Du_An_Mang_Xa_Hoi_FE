@@ -14,6 +14,8 @@ import {NewsfeedDetailComponent} from "./newsfeed/newsfeed-detail/newsfeed-detai
 import {PeopleDetailComponent} from "./people-detail/people-detail.component";
 import {TimelineAboutComponent} from "./user-detail/timeline-about/timeline-about.component";
 import {TimelineFriendsComponent} from "./user-detail/timeline-friends/timeline-friends.component";
+import {PeopleDetailAboutComponent} from "./people-detail/people-detail-about/people-detail-about.component";
+import {MutualFriendComponent} from "./people-detail/mutual-friend/mutual-friend.component";
 
 const routes: Routes = [
   {
@@ -58,7 +60,16 @@ const routes: Routes = [
   },
   {
     path: 'people-detail/:id',
-    component: PeopleDetailComponent
+    component: PeopleDetailComponent,
+    children: [{
+      path: 'about/:id',
+      component: PeopleDetailAboutComponent
+    },
+      {
+        path: 'mutual-friend/:id',
+        component: MutualFriendComponent
+      }
+    ]
   }
 ];
 
