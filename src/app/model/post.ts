@@ -2,7 +2,7 @@ import {User} from "./user";
 import {Image} from "./image";
 
 export interface Post {
-  id?: string;
+  id?: any;
   user?: User;
   createAt?: string;
   content?: string;

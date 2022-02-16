@@ -4,27 +4,30 @@
 
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
           <span class="sr-only">Toggle navigation</span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index-register.html"><img src="images/logo.png" alt="logo" /></a>
+        <a class="navbar-brand" href="index-register.html"><img src="images/logo.png" alt="logo"/></a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right main-menu">
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Home <span><img src="images/down-arrow.png" alt="" /></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+               aria-expanded="false">Home <span><img src="images/down-arrow.png" alt=""/></span></a>
             <ul class="dropdown-menu newsfeed-home">
               <li><a href="../../../../../index.html">Landing Page 1</a></li>
               <li><a href="index-register.html">Landing Page 2</a></li>
             </ul>
           </li>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Newsfeed <span><img src="images/down-arrow.png" alt="" /></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+               aria-expanded="false">Newsfeed <span><img src="images/down-arrow.png" alt=""/></span></a>
             <ul class="dropdown-menu newsfeed-home">
               <li><a href="newsfeed.html">Newsfeed</a></li>
               <li><a href="newsfeed-people-nearby.html">Poeple Nearly</a></li>
@@ -35,7 +38,8 @@
             </ul>
           </li>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Timeline <span><img src="images/down-arrow.png" alt="" /></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+               aria-expanded="false">Timeline <span><img src="images/down-arrow.png" alt=""/></span></a>
             <ul class="dropdown-menu login">
               <li><a href="timeline.html">Timeline</a></li>
               <li><a href="timeline-about.html">Timeline About</a></li>
@@ -49,7 +53,8 @@
             </ul>
           </li>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle pages" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">All Pages <span><img src="images/down-arrow.png" alt="" /></span></a>
+            <a href="#" class="dropdown-toggle pages" data-toggle="dropdown" role="button" aria-haspopup="true"
+               aria-expanded="false">All Pages <span><img src="images/down-arrow.png" alt=""/></span></a>
             <ul class="dropdown-menu page-list">
               <li><a href="../../../../../index.html">Landing Page 1</a></li>
               <li><a href="index-register.html">Landing Page 2</a></li>
@@ -93,7 +98,7 @@
         <div class="row">
           <div class="col-md-3">
             <div class="profile-info">
-              <img src="http://placehold.it/300x300" alt="" class="img-responsive profile-photo" />
+              <img src="http://placehold.it/300x300" alt="" class="img-responsive profile-photo"/>
               <h3>Sarah Cruiz</h3>
               <p class="text-muted">Creative Director</p>
             </div>
@@ -107,7 +112,9 @@
             </ul>
             <ul class="follow-me list-inline">
               <li>1,299 people following her</li>
-              <li><button class="btn-primary">Add Friend</button></li>
+              <li>
+                <button class="btn-primary">Add Friend</button>
+              </li>
             </ul>
           </div>
         </div>
@@ -116,7 +123,7 @@
       <!--Timeline Menu for Small Screens-->
       <div class="navbar-mobile hidden-lg hidden-md">
         <div class="profile-info">
-          <img src="http://placehold.it/300x300" alt="" class="img-responsive profile-photo" />
+          <img src="http://placehold.it/300x300" alt="" class="img-responsive profile-photo"/>
           <h4>Sarah Cruiz</h4>
           <p class="text-muted">Creative Director</p>
         </div>
@@ -143,19 +150,28 @@
             <div class="row">
               <div class="col-md-7 col-sm-7">
                 <div class="form-group">
-                  <img src="http://placehold.it/300x300" alt="" class="profile-photo-md" />
-                  <textarea name="texts" id="exampleTextarea" cols="30" rows="1" class="form-control" placeholder="Write what you wish"></textarea>
-                </div>
-              </div>
-              <div class="col-md-5 col-sm-5">
-                <div class="tools">
-                  <ul class="publishing-tools list-inline">
-                    <li><a href="#"><i class="ion-compose"></i></a></li>
-                    <li><a href="#"><i class="ion-images"></i></a></li>
-                    <li><a href="#"><i class="ion-ios-videocam"></i></a></li>
-                    <li><a href="#"><i class="ion-map"></i></a></li>
-                  </ul>
-                  <button class="btn btn-primary pull-right">Publish</button>
+                  <form [formGroup]="postForm" (submit)="createPost()">
+                    <img src="http://placehold.it/300x300" alt="" class="profile-photo-md"/>
+                    <textarea formControlName="content" name="texts" id="exampleTextarea" cols="30" rows="1"
+                              class="form-control" placeholder="Write what you wish"></textarea>
+                    <h3>Select Status</h3>
+                    <select formControlName="status">
+                      <option value="1">Tất cả mọi người</option>
+                      <option value="2">Tất cả bạn bè</option>
+                      <option value="3">Chỉ mình tôi</option>
+                    </select>
+                    <div class="col-md-5 col-sm-5">
+                      <div class="tools">
+                        <ul class="publishing-tools list-inline">
+                          <li><a href="#"><i class="ion-compose"></i></a></li>
+                          <li><a href="#"><i class="ion-images"></i></a></li>
+                          <li><a href="#"><i class="ion-ios-videocam"></i></a></li>
+                          <li><a href="#"><i class="ion-map"></i></a></li>
+                        </ul>
+                        <button class="btn btn-primary pull-right">Publish</button>
+                      </div>
+                    </div>
+                  </form>
                 </div>
               </div>
             </div>
@@ -171,35 +187,42 @@
               <p class="text-grey">10/22/2016</p>
             </div><!--Post Date End-->
 
-            <img src="http://placehold.it/1920x1280" alt="post-image" class="img-responsive post-image" />
+            <img src="http://placehold.it/1920x1280" alt="post-image" class="img-responsive post-image"/>
             <div class="post-container">
-              <img src="http://placehold.it/300x300" alt="user" class="profile-photo-md pull-left" />
+              <img src="http://placehold.it/300x300" alt="user" class="profile-photo-md pull-left"/>
               <div class="post-detail">
                 <div class="user-info">
-                  <h5><a href="timeline.html" class="profile-link">{{ct.user?.username}}</a> <span class="following">following</span></h5>
-                  <p class="text-muted">{{ct.createAt | date:"mm/dd/yyyy"}}</p>
+                  <h5><a href="timeline.html" class="profile-link">{{ct.user?.username}}</a> <span class="following">following</span>
+                  </h5>
+                  <p class="text-muted">{{ct?.createAt | date:"mm/dd/yyyy"}}</p>
                 </div>
                 <div class="reaction">
                   <a class="btn text-green"><i class="icon ion-thumbsup"></i> 49</a>
                   <a class="btn text-red"><i class="fa fa-thumbs-down"></i> 0</a>
+                  <button (click)="update(ct?.id)">Edit</button>
                 </div>
                 <div class="line-divider"></div>
                 <div class="post-text">
 
 
-  <td>{{ct.content}}</td>
+                  <td>{{ct.content}}</td>
+
                 </div>
                 <div class="line-divider"></div>
                 <div class="post-comment">
-                  <img src="http://placehold.it/300x300" alt="" class="profile-photo-sm" />
-                  <p><a href="timeline.html" class="profile-link">Diana </a><i class="em em-laughing"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud </p>
+                  <img src="http://placehold.it/300x300" alt="" class="profile-photo-sm"/>
+                  <p><a href="timeline.html" class="profile-link">Diana </a><i class="em em-laughing"></i> Lorem ipsum
+                    dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                    magna aliqua. Ut enim ad minim veniam, quis nostrud </p>
                 </div>
                 <div class="post-comment">
-                  <img src="http://placehold.it/300x300" alt="" class="profile-photo-sm" />
-                  <p><a href="timeline.html" class="profile-link">John</a> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud </p>
+                  <img src="http://placehold.it/300x300" alt="" class="profile-photo-sm"/>
+                  <p><a href="timeline.html" class="profile-link">John</a> Lorem ipsum dolor sit amet, consectetur
+                    adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                    veniam, quis nostrud </p>
                 </div>
                 <div class="post-comment">
-                  <img src="http://placehold.it/300x300" alt="" class="profile-photo-sm" />
+                  <img src="http://placehold.it/300x300" alt="" class="profile-photo-sm"/>
                   <input type="text" class="form-control" placeholder="Post a comment">
                 </div>
               </div>
@@ -252,7 +275,7 @@
     <div class="row">
       <div class="footer-wrapper">
         <div class="col-md-3 col-sm-3">
-          <a href=""><img src="images/logo-black.png" alt="" class="footer-logo" /></a>
+          <a href=""><img src="images/logo-black.png" alt="" class="footer-logo"/></a>
           <ul class="list-inline social-icons">
             <li><a href="#"><i class="icon ion-social-facebook"></i></a></li>
             <li><a href="#"><i class="icon ion-social-twitter"></i></a></li>
@@ -308,3 +331,31 @@
     <p>Thunder Team © 2016. All rights reserved</p>
   </div>
 </footer>
+<!--modal-->
+<div class="modal fade" id="formEdit " tabindex="-1"
+     aria-labelledby="exampleModalLabel1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel1">Update
+          post</h5>
+        <button type="button" class="close" data-dismiss="modal"
+                aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form>
+        <input type="hidden" value="${post.id}" name="postId">
+        <div class="modal-body">
+          <p><input type="text" name="content" style="width: 400px" value="${post.content}">&ensp;Content</p>
+          <p><input type="text" name="image" style="width: 400px" value="${post.image}">&ensp;Image
+          </p>
+        </div>
+        <div class="modal-footer">
+          <input type="submit" class="btn btn-primary"
+                 value="Save changes">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

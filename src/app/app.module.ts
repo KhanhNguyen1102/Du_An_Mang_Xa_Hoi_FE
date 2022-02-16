@@ -10,13 +10,11 @@ import {AngularFireStorageModule} from "@angular/fire/compat/storage";
 import {AngularFireModule} from "@angular/fire/compat";
 import { EditPostComponent } from './module/post/components/edit-post/edit-post.component';
 import { ListPostComponent } from './module/post/components/list-post/list-post.component';
-import { CreatePostComponent } from './module/post/components/create-post/create-post.component';
 @NgModule({
   declarations: [
     AppComponent,
     EditPostComponent,
     ListPostComponent,
-    CreatePostComponent,
   ],
   imports: [
     BrowserModule,

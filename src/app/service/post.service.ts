@@ -9,11 +9,17 @@ const API_URL = 'http://localhost:8080/api/posts';
 export class PostService {
 
   constructor(private httpClient: HttpClient) { }
-  getAll():Observable<Post[]>{
-    return this.httpClient.get<Post[]>(API_URL);
+    getAll(idUser: string | undefined):Observable<Post[]>{
+    return this.httpClient.get<Post[]>(API_URL+`/search?q=${idUser}`);
   }
 
   create(post: Post): Observable<Post>{
     return this.httpClient.post<Post>(API_URL,post);
+  }
+  findById(id:string): Observable<Post>{
+    return this.httpClient.get<Post>(API_URL+`/${id}`);
+  }
+  updatePostProfile(id:string,city:Post):Observable<Post>{
+    return this.httpClient.put<Post>(API_URL+`/${id}`,city);
   }
 }
