@@ -168,7 +168,7 @@
                           <li><a href="#"><i class="ion-ios-videocam"></i></a></li>
                           <li><a href="#"><i class="ion-map"></i></a></li>
                         </ul>
-                        <button class="btn btn-primary pull-right">Publish</button>
+                        <button class="btn btn-primary pull-right"> POST</button>
                       </div>
                     </div>
                   </form>
@@ -199,7 +199,7 @@
                 <div class="reaction">
                   <a class="btn text-green"><i class="icon ion-thumbsup"></i> 49</a>
                   <a class="btn text-red"><i class="fa fa-thumbs-down"></i> 0</a>
-                  <button (click)="update(ct?.id)">Edit</button>
+                  <button (click)="update(ct?.id,ct.user?.id)">Edit</button>
                 </div>
                 <div class="line-divider"></div>
                 <div class="post-text">
@@ -332,24 +332,30 @@
   </div>
 </footer>
 <!--modal-->
-<div class="modal fade" id="formEdit " tabindex="-1"
+<div class="modal fade" id="formEdit" tabindex="-1" role="dialog"
      aria-labelledby="exampleModalLabel1" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel1">Update
+        <h5 class="modal-title" id="formEdit1">Update
           post</h5>
         <button type="button" class="close" data-dismiss="modal"
                 aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form>
-        <input type="hidden" value="${post.id}" name="postId">
+      <form [formGroup]="postEditForm" (submit)="editPost()">
+        <input type="hidden" ngModel="{{idPostEdit}}" formControlName="postId">
+        <input type="hidden" ngModel="{{idUserPostEdit}}" formControlName="postIdUser">
         <div class="modal-body">
-          <p><input type="text" name="content" style="width: 400px" value="${post.content}">&ensp;Content</p>
-          <p><input type="text" name="image" style="width: 400px" value="${post.image}">&ensp;Image
-          </p>
+            <textarea formControlName="content1" name="texts" cols="30" rows="1"
+                      class="form-control" placeholder="Write what you wish"></textarea>
+          <h3>Select Status</h3>
+          <select formControlName="status1">
+            <option value="1">Tất cả mọi người</option>
+            <option value="2">Tất cả bạn bè</option>
+            <option value="3">Chỉ mình tôi</option>
+          </select>
         </div>
         <div class="modal-footer">
           <input type="submit" class="btn btn-primary"

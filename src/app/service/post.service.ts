@@ -19,7 +19,7 @@ export class PostService {
   findById(id:string): Observable<Post>{
     return this.httpClient.get<Post>(API_URL+`/${id}`);
   }
-  updatePostProfile(id:string,city:Post):Observable<Post>{
-    return this.httpClient.put<Post>(API_URL+`/${id}`,city);
+  updatePostProfile(id:string,post:Post):Observable<Post>{
+    return this.httpClient.put<Post>(API_URL+`/${id}`,post);
   }
 }

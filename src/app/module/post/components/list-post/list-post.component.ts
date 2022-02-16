@@ -3,7 +3,9 @@ import {Post} from "../../../../model/post";
 import {PostService} from "../../../../service/post.service";
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {ActivatedRoute, ParamMap, Router} from "@angular/router";
-declare var $:any
+
+declare var $: any
+
 @Component({
   selector: 'app-list-post',
   templateUrl: './list-post.component.html',
@@ -13,18 +15,26 @@ export class ListPostComponent implements OnInit {
   currentUser: string = "";
   idUser: string | undefined;
   post: Post[] = []
-  post2:Post={};
+  post2: Post = {};
+  idPostEdit: string | undefined;
+  idUserPostEdit: string | undefined;
   postForm: FormGroup = new FormGroup({
-    id:new FormControl(),
+    id: new FormControl(),
     content: new FormControl(''),
     imageList: new FormControl(''),
     status: new FormControl(''),
   })
+  postEditForm: FormGroup = new FormGroup({
+    postId: new FormControl(),
+    postIdUser: new FormControl(),
+    content1: new FormControl(''),
+    status1: new FormControl(''),
+  })
 
   constructor(private postService: PostService,
-  private activatedRoute: ActivatedRoute,
-  private fb: FormBuilder,
-  private router: Router) {
+              private activatedRoute: ActivatedRoute,
+              private fb: FormBuilder,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -41,20 +51,15 @@ export class ListPostComponent implements OnInit {
         console.log(error);
       }
     )
-    this.activatedRoute.paramMap.subscribe((paraMap: ParamMap) => {
-      let id = paraMap.get('id')
-      console.log(id)
-      // @ts-ignore
-      this.cityService.findById(id).subscribe(result => {
-        this.post = result
-        console.log(result)
-      })
-    })
-    this.post2={
-      id:'',
-      content: '',
-      status:'',
-    }
+    // this.activatedRoute.paramMap.subscribe((paraMap: ParamMap) => {
+    //   let id = paraMap.get('id')
+    //   console.log(id)
+    //   // @ts-ignore
+    //   this.cityService.findById(id).subscribe(result => {
+    //     this.post = result
+    //     console.log(result)
+    //   })
+    // })
   }
 
   createPost() {
@@ -76,13 +81,39 @@ export class ListPostComponent implements OnInit {
     )
   }
 
-  update(id:any) {
+  update(id: string | undefined, idUser: string | undefined) {
     $('#formEdit ').modal('show');
+
+    this.idPostEdit = id;
+    this.idUserPostEdit = idUser;
     // setTimeout( () => {$('#requestSuccess').modal('hide');},3000);
-  //   const post= this.postForm.value;
-  //   this.postService.updatePostProfile(post.id, post).subscribe(() => {
-  //     alert("Sửa thành công ")
-  //   })
-   }
+    //   const post= this.postForm.value;
+    //   this.postService.updatePostProfile(post.id, post).subscribe(() => {
+    //     alert("Sửa thành công ")
+    //   })
+  }
+
+  editPost() {
+
+    const post = this.postEditForm.value;
+    console.log(this.postEditForm.value)
+    console.log(this.idPostEdit);
+    console.log(this.idUserPostEdit);
+    let postEdit = {
+      user: {
+        id: this.postEditForm.value.postIdUser,
+      },
+      content: this.postEditForm.value.content1,
+
+      status: this.postEditForm.value.status1,
+    }
+    console.log(postEdit);
+    // @ts-ignore
+    this.postService.updatePostProfile(this.postEditForm.value.postId, postEdit).subscribe(() => {
+        alert("xong")
+        this.ngOnInit();
+      }
+    )
+  }
 }
 
