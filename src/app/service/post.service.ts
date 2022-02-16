@@ -22,4 +22,7 @@ export class PostService {
   updatePostProfile(id:string,post:Post):Observable<Post>{
     return this.httpClient.put<Post>(API_URL+`/${id}`,post);
   }
+  deleteFindById(id:string){
+    return this.httpClient.delete<Post>(API_URL+`/${id}`);
+  }
 }
