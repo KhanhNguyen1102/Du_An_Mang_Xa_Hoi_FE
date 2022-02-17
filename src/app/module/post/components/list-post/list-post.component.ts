@@ -117,12 +117,14 @@ export class ListPostComponent implements OnInit {
   }
   deletePost(id: string | undefined){
     console.log(id)
-    // @ts-ignore
-    this.postService.deleteFindById(id).subscribe(() => {
-        alert("xong")
-        this.ngOnInit();
-      }
-    )
+    if (confirm("yes")){
+      // @ts-ignore
+      this.postService.deleteFindById(id).subscribe(() => {
+          alert("xong")
+          this.ngOnInit();
+        }
+      )
+    }
   }
 }
 
