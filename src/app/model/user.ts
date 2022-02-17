@@ -7,7 +7,7 @@ export interface User {
   password?:string,
   confirmPassword?:string,
   enabled?:boolean,
-  role?:[Role],
+  role?:Role[],
   fullName?: string,
   email?:string,
   phoneNumber?:string,
