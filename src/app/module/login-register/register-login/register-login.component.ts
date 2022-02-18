@@ -57,6 +57,7 @@ export class RegisterLoginComponent implements OnInit {
     this.loading = true;
     this.authenticationService.login(this.loginForm.value)
       .subscribe((data: JWTResponse) => {
+        console.log(data)
           localStorage.setItem('currentUser', JSON.stringify(data));
           localStorage.setItem('ACCESS_TOKEN', data.token);
           // localStorage.setItem('ROLE', data.roles[0].authority);

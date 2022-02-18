@@ -9,7 +9,11 @@ const routes: Routes = [
   {
     path:'user',
     loadChildren :() => import('./module/user/user.module').then(module => module.UserModule)
-  }
+  },
+  {
+    path:'post',
+    loadChildren :() => import('./module/post/post.module').then(module => module.PostModule)
+  },
 ];
 
 @NgModule({

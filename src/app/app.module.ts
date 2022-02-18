@@ -1,17 +1,20 @@
-import {NgModule} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 
-import {AppRoutingModule} from './app-routing.module';
-import {AppComponent} from './app.component';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {environment} from "../environments/environment";
 import {AngularFireStorageModule} from "@angular/fire/compat/storage";
 import {AngularFireModule} from "@angular/fire/compat";
-
+import { EditPostComponent } from './module/post/components/edit-post/edit-post.component';
+import { ListPostComponent } from './module/post/components/list-post/list-post.component';
 @NgModule({
   declarations: [
     AppComponent,
+    EditPostComponent,
+    ListPostComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,5 +29,4 @@ import {AngularFireModule} from "@angular/fire/compat";
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-}
+export class AppModule { }
