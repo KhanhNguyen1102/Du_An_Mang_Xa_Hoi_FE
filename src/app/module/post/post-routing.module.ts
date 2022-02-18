@@ -3,11 +3,16 @@ import { RouterModule, Routes } from '@angular/router';
 import {RegisterLoginComponent} from "../login-register/register-login/register-login.component";
 import {ListPostComponent} from "./components/list-post/list-post.component";
 import {EditPostComponent} from "./components/edit-post/edit-post.component";
+import {PostComponent} from "./components/post/post.component";
 
 const routes: Routes = [
   {
-    path :'',
-    component: ListPostComponent
+    path :'detail',
+    component: PostComponent,
+    children:[{
+      path:'list-post',
+      component: ListPostComponent
+    }]
   },
   {
     path :'edit-post',

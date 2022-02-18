@@ -3,6 +3,8 @@ import {Post} from "../../../../model/post";
 import {PostService} from "../../../../service/post.service";
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {ActivatedRoute, ParamMap, Router} from "@angular/router";
+import {User} from "../../../../model/user";
+import {UserService} from "../../../../service/user.service";
 
 declare var $: any
 
@@ -18,6 +20,7 @@ export class ListPostComponent implements OnInit {
   post2: Post = {};
   idPostEdit: string | undefined;
   idUserPostEdit: string | undefined;
+  userDetail!: User;
   postForm: FormGroup = new FormGroup({
     id: new FormControl(),
     content: new FormControl(''),
@@ -31,7 +34,8 @@ export class ListPostComponent implements OnInit {
     status1: new FormControl(''),
   })
 
-  constructor(private postService: PostService,
+  constructor(private userService: UserService,
+              private postService: PostService,
               private activatedRoute: ActivatedRoute,
               private fb: FormBuilder,
               private router: Router) {
@@ -43,7 +47,12 @@ export class ListPostComponent implements OnInit {
     console.log(this.currentUser);
     this.idUser = JSON.parse(this.currentUser).id;
     console.log(this.idUser);
-
+    this.userService.userDetail(this.idUser + "").subscribe(result => {
+      this.userDetail = result;
+      console.log(result);
+    }, error => {
+      console.log(error)
+    });
     this.postService.getAll(this.idUser).subscribe(result => {
         this.post = result;
         console.log(result);
@@ -115,9 +124,10 @@ export class ListPostComponent implements OnInit {
       }
     )
   }
-  deletePost(id: string | undefined){
+
+  deletePost(id: string | undefined) {
     console.log(id)
-    if (confirm("yes")){
+    if (confirm("yes")) {
       // @ts-ignore
       this.postService.deleteFindById(id).subscribe(() => {
           alert("xong")
