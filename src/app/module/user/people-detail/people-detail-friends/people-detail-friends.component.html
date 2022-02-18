@@ -1,4 +1,4 @@
-<div *ngIf="friendRelation != null && friendRelation.status == '2'; else  notFriend()" class="col-md-7">
+<div *ngIf="friendRelation != null && friendRelation.status == '2'" class="col-md-7">
 
   <!-- Friend List
   ================================================= -->
@@ -14,9 +14,9 @@
                 <div class="col-md-6 col-sm-6">
                   <h5><a routerLink="/user/people-detail/{{friend.id}}/about/{{friend.id}}"
                          class="profile-link">{{friend?.username}}</a></h5>
-                  <p>Student at Harvard</p>
+                  <p>{{friend?.address}}</p>
                 </div>
-                <div class="col-md-6 col-sm-6">
+                <div  class="col-md-6 col-sm-6">
                   <div class="dropdown">
                     <button class="nut_dropdown btn btn-primary pull-right">Friends</button>
                     <div class="noidung_dropdown">

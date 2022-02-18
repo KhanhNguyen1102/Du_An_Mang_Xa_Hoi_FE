@@ -16,7 +16,6 @@ export class PeopleDetailFriendsComponent implements OnInit {
   friendRelation: any;
   peopleFriend: User[] | undefined;
   usernameFriend: string | undefined;
-  peopleId: any;
 
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
@@ -29,58 +28,45 @@ export class PeopleDetailFriendsComponent implements OnInit {
     // @ts-ignore
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
-        const people = paramMap.get('id');
-        this.peopleId = people;
-        this.friendRelationService.findRelationByIdUserAndIdFriend(this.currentUser.id, people + "").subscribe(result => {
-          this.friendRelation = result
-          console.log(this.friendRelation)
-        }, error => {
-          console.log(error);
-        });
-        this.friendRelationService.getAllFriend(this.peopleId + "").subscribe(result => {
-          this.peopleFriend = result
-          console.log(result)
-        }, error => {
-          console.log(error);
-        })
-      }
-    )
-    ;
+      const people = paramMap.get('id');
+      this.friendRelationService.findRelationByIdUserAndIdFriend(this.currentUser.id, people + "").subscribe(result => {
+        this.friendRelation = result
+        console.log(this.friendRelation)
+      }, error => {
+        console.log(error);
+      });
+      this.friendRelationService.getAllFriend(people + "").subscribe(result => {
+        this.peopleFriend = result
+        console.log(result)
+      });
+    });
+    }
+  ngOnInit():
+    void {
   }
 
-  ngOnInit()
-    :
-    void {
-    // // Check quan hệ bạn bè, nếu là bạn bè, hiển thị list friend
-    // if (this.friendRelation != null && this.friendRelation.status == '2') {
-    //   this.friendRelationService.getAllFriend(this.peopleId + "").subscribe(result => {
-    //     this.peopleFriend = result
-    //     console.log(result)
-    //   }, error => {
-    //     console.log(error);
-    //   })
-    // } else {
-    //   $('#notFriend').modal('show')
-    //   setTimeout(() => {
-    //     $('#notFriend').modal('hide');
-    //   }, 3000);
-    //   this.router.navigate(["/user/people-detail/" + this.peopleId + '' + "/about/" + this.peopleId + '']);
-    // }
-    // // this.router.navigate(['user/friends']);
-  }
-  notFriend(){
+  notFriend() {
     $('#notFriend1').modal('show')
-      setTimeout(() => {
-        $('#notFriend').modal('hide');
-      }, 3000);
-      // this.router.navigate(["/user/people-detail/" + this.peopleId + '' + "/about/" + this.peopleId + '']);
+    setTimeout(() => {
+      $('#notFriend').modal('hide');
+    }, 3000);
+    // this.router.navigate(["/user/people-detail/" + this.peopleId + '' + "/about/" + this.peopleId + '']);
   }
-  cancelRelationship(idFriend
-                       :
-                       string | undefined, username
-                       :
-                       string | undefined
-  ) {
+
+  // checkRelationship(idFriend:  string | undefined){
+  //   let result2: string | undefined;
+  //   this.friendRelationService.findRelationByIdUserAndIdFriend(this.currentUser.id, idFriend + "").subscribe(result => {
+  //     let friendRelation1 = result
+  //     console.log(friendRelation1);
+  //     result2= friendRelation1.status;
+  //   }, error => {
+  //     console.log(error);
+  //   });
+  //   return result2;
+  // }
+
+  cancelRelationship(idFriend: string | undefined,
+                     username: string | undefined) {
     this.usernameFriend = username;
     // @ts-ignore
     this.friendRelationService.unFriend(this.currentUser.id, idFriend).subscribe(() => {
