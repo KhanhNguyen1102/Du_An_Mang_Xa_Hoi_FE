@@ -84,8 +84,10 @@ export class ListPostComponent implements OnInit {
     console.log(post);
     // @ts-ignore
     this.postService.create(post).subscribe(() => {
-        alert("xong")
-        this.ngOnInit();
+        $('#createPost').modal('show')
+        setTimeout( () => {$('#createPost').modal('hide');},3000);
+        this.ngOnInit()
+
       }
     )
   }
@@ -119,8 +121,9 @@ export class ListPostComponent implements OnInit {
     console.log(postEdit);
     // @ts-ignore
     this.postService.updatePostProfile(this.postEditForm.value.postId, postEdit).subscribe(() => {
-        alert("xong")
-        this.ngOnInit();
+      $('#editPost').modal('show')
+      setTimeout( () => {$('#editPost').modal('hide');},3000);
+      this.ngOnInit()
       }
     )
   }

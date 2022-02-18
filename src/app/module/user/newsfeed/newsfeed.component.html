@@ -158,29 +158,39 @@
       <div class="col-md-7">
 
         <!-- Post Create Box
-        ================================================= -->
+     ================================================= -->
         <div class="create-post">
           <div class="row">
-            <div class="col-md-7 col-sm-7">
-              <div class="form-group">
-                <img src="http://placehold.it/300x300" alt="" class="profile-photo-md"/>
-                <textarea name="texts" id="exampleTextarea" cols="30" rows="1" class="form-control"
-                          placeholder="Write what you wish"></textarea>
+            <form [formGroup]="postForm" (submit)="createPost()">
+
+              <div class="col-md-7 col-sm-7">
+
+                <div class="form-group">
+
+                  <img src="{{userDetail?.avatar}}" alt="" class="profile-photo-md"/>
+                  <textarea formControlName="content" name="texts" id="exampleTextarea" cols="30" rows="1"
+                            class="form-control" placeholder="Write what you wish"></textarea>
+                </div>
               </div>
-            </div>
-            <div class="col-md-5 col-sm-5">
-              <div class="tools">
-                <ul class="publishing-tools list-inline">
-                  <li><a href="#"><i class="ion-compose"></i></a></li>
-                  <li><a href="#"><i class="ion-images"></i></a></li>
-                  <li><a href="#"><i class="ion-ios-videocam"></i></a></li>
-                  <li><a href="#"><i class="ion-map"></i></a></li>
-                </ul>
-                <button class="btn btn-primary pull-right">Publish</button>
+              <div class="col-md-5 col-sm-5">
+                <div class="tools">
+                  <ul class="publishing-tools list-inline">
+                    <li>
+                      <select formControlName="status">
+                        <option value="1">Public</option>
+                        <option value="2">Only friends</option>
+                        <option value="3">Private</option>
+                      </select></li>
+                    <!--              <li><a href="#"><i class="ion-images"></i></a></li>-->
+                    <!--              <li><a href="#"><i class="ion-ios-videocam"></i></a></li>-->
+                    <!--              <li><a href="#"><i class="ion-map"></i></a></li>-->
+                  </ul>
+                  <button class="btn btn-primary pull-right">POST</button>
+                </div>
               </div>
-            </div>
+            </form>
           </div>
-        </div>
+        </div><!-- Post Create Box End-->
         <router-outlet></router-outlet>
       </div>
 
@@ -189,40 +199,12 @@
       ================================================= -->
       <div class="col-md-2 static">
         <div class="suggestions" id="sticky-sidebar">
-          <h4 class="grey">Who to Follow</h4>
-          <div class="follow-user">
-            <img src="http://placehold.it/300x300" alt="" class="profile-photo-sm pull-left"/>
+          <h4 class="grey">Who to Accept</h4>
+          <div  *ngFor="let friend of listFriendRequest" class="follow-user">
+            <img src="{{friend.avatar}}" alt="" class="profile-photo-sm pull-left"/>
             <div>
-              <h5><a href="timeline.html">Diana Amber</a></h5>
-              <a href="#" class="text-green">Add friend</a>
-            </div>
-          </div>
-          <div class="follow-user">
-            <img src="http://placehold.it/300x300" alt="" class="profile-photo-sm pull-left"/>
-            <div>
-              <h5><a href="timeline.html">Cris Haris</a></h5>
-              <a href="#" class="text-green">Add friend</a>
-            </div>
-          </div>
-          <div class="follow-user">
-            <img src="http://placehold.it/300x300" alt="" class="profile-photo-sm pull-left"/>
-            <div>
-              <h5><a href="timeline.html">Brian Walton</a></h5>
-              <a href="#" class="text-green">Add friend</a>
-            </div>
-          </div>
-          <div class="follow-user">
-            <img src="http://placehold.it/300x300" alt="" class="profile-photo-sm pull-left"/>
-            <div>
-              <h5><a href="timeline.html">Olivia Steward</a></h5>
-              <a href="#" class="text-green">Add friend</a>
-            </div>
-          </div>
-          <div class="follow-user">
-            <img src="http://placehold.it/300x300" alt="" class="profile-photo-sm pull-left"/>
-            <div>
-              <h5><a href="timeline.html">Sophia Page</a></h5>
-              <a href="#" class="text-green">Add friend</a>
+              <h5><a routerLink="/user/people-detail/{{friend?.id}}/about/{{friend?.id}}">{{friend?.username}}</a></h5>
+              <a (click)="acceptFriend(friend.id, friend.username)">Accept request</a>
             </div>
           </div>
         </div>
@@ -294,4 +276,39 @@
     <p>Thunder Team © 2016. All rights reserved</p>
   </div>
 </footer>
-
+<div class="modal fade" id="createPost" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="createPost1">Processing. Please wait...</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <b>Successfully post!</b>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="confirmRequest" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="confirmRequest1">Accept friend request. Please wait...</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <b>Successfully accepted {{usernameFriend}}'s friend request !</b>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>

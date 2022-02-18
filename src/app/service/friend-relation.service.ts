@@ -25,6 +25,11 @@ export class FriendRelationService {
     return this.httpClient.get<User[]>(API_URL + `/friendRequest/${idU}`);
   }
 
+  findTop5RequestById(idU: string): Observable<User[]> {
+    return this.httpClient.get<User[]>(API_URL + `/top5Request/${idU}`);
+  }
+
+
   acceptFriend(idU: string, idRequest: string): Observable<FriendRelation> {
     return this.httpClient.get<FriendRelation>(API_URL + `/acceptance/${idU}/${idRequest}`);
   }

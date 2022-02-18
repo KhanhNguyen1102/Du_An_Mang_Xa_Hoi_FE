@@ -25,4 +25,8 @@ export class PostService {
   deleteFindById(id:string){
     return this.httpClient.delete<Post>(API_URL+`/${id}`);
   }
+
+  findPostByIdFriend(id:string){
+    return this.httpClient.get<Post>(API_URL + `/postOfFriends/${id}`)
+  }
 }

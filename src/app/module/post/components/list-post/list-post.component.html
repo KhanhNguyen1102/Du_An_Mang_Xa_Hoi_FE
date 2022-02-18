@@ -152,9 +152,9 @@
                       class="form-control" placeholder="Write what you wish"></textarea>
           <h3>Select Status</h3>
           <select formControlName="status1">
-            <option value="1">Tất cả mọi người</option>
-            <option value="2">Tất cả bạn bè</option>
-            <option value="3">Chỉ mình tôi</option>
+            <option value="1">Public</option>
+            <option value="2">Only Friend</option>
+            <option value="3">Private</option>
           </select>
         </div>
         <div class="modal-footer">
@@ -162,6 +162,42 @@
                  value="Save changes">
         </div>
       </form>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="createPost" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="createPost1">Processing. Please wait...</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <b>Successfully post!</b>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="editPost" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editPost1">Processing. Please wait...</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <b>Successfully edit post!</b>
+      </div>
+      <div class="modal-footer">
+      </div>
     </div>
   </div>
 </div>
